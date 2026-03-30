@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎲 Bonus V2 電子骰機率驗證</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1a1b1e;
+      --surface: #25262b;
+      --surface2: #2c2e33;
+      --border: #373a40;
+      --text: #c9d1d9;
+      --muted: #6e7681;
+      --green: #51cf66;
+      --yellow: #ffd43b;
+      --red: #ff6b6b;
+      --blue: #74c0fc;
+      --purple: #cc5de8;
+      --accent: #1971c2;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+      font-size: 14px;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e9ecef;
+    }
+    .page-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── Control Panel ── */
+    .control-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: flex-end;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .input-group label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 8px 12px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus { border-color: var(--accent); }
+    #urlInput  { width: 500px; }
+    #roundsInput { width: 110px; }
+
+    .btn-group { display: flex; gap: 8px; align-items: flex-end; }
+
+    button {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter .15s, opacity .15s;
+    }
+    button:hover:not(:disabled) { filter: brightness(1.12); }
+    button:disabled { opacity: .45; cursor: default; }
+
+    #startBtn  { background: #2f9e44; color: #fff; }
+    #stopBtn   { background: #c92a2a; color: #fff; }
+    #clearBtn  { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+
+    /* ── Status Bar ── */
+    .status-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .status-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+      transition: background .3s;
+    }
+    .status-dot.active {
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: blink 1.4s infinite;
+    }
+    .status-dot.done { background: var(--blue); }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .progress-wrap {
+      flex: 1;
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width .4s;
+      width: 0%;
+    }
+    #statusCount { font-size: 13px; font-weight: 700; color: var(--text); white-space: nowrap; }
+    #statusMsg   { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+    /* ── Stats Grid ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .stat-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .stat-card-title { font-size: 13px; font-weight: 700; color: var(--blue); }
+    .stat-card-total { font-size: 11px; color: var(--muted); }
+
+    .stat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .stat-table th {
+      padding: 3px 8px 7px;
+      text-align: right;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 11px;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-table th:first-child { text-align: left; }
+    .stat-table td {
+      padding: 5px 8px;
+      text-align: right;
+      border-bottom: 1px solid var(--surface2);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-table td:first-child { text-align: left; font-weight: 600; }
+    .stat-table tr:last-child td { border-bottom: none; }
+
+    .diff-ok   { color: var(--green); }
+    .diff-warn { color: var(--yellow); }
+    .diff-bad  { color: var(--red); }
+    .diff-none { color: var(--muted); }
+
+    /* ── Export Buttons ── */
+    .export-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .export-btn {
+      flex: 1;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 0;
+    }
+
+    /* ── Detail Section ── */
+    .detail-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .detail-header:hover { background: rgba(255,255,255,.02); }
+    .detail-header-left { font-size: 13px; font-weight: 700; color: var(--text); display: flex; gap: 8px; align-items: center; }
+    .detail-count-badge { font-size: 11px; font-weight: 400; color: var(--muted); }
+    .detail-toggle-icon { font-size: 11px; color: var(--muted); }
+
+    .detail-body {
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .detail-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .detail-table th {
+      position: sticky;
+      top: 0;
+      background: var(--surface2);
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      z-index: 1;
+      white-space: nowrap;
+    }
+    .detail-table td {
+      padding: 6px 12px;
+      border-bottom: 1px solid var(--surface2);
+      vertical-align: middle;
+    }
+    .detail-table tr:hover td { background: rgba(255,255,255,.02); }
+    .detail-table tr:last-child td { border-bottom: none; }
+
+    .col-num  { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 11px; }
+    .col-time { color: var(--muted); font-size: 11px; white-space: nowrap; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin: 1px 2px 1px 0;
+      white-space: nowrap;
+    }
+    .tag-m2 { background: rgba(116,192,252,.15); color: var(--blue); }
+    .tag-m3 { background: rgba(81,207,102,.15);  color: var(--green); }
+    .tag-ad { background: rgba(255,212,59,.15);  color: var(--yellow); }
+    .tag-at { background: rgba(255,107,107,.15); color: var(--red); }
+    .tag-none { color: var(--muted); font-size: 11px; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #495057; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <div class="page-title">🎲 Bonus ColorGame V2 — 電子骰機率驗證工具</div>
+      <div class="page-subtitle">即時攔截 WebSocket · 比對 V2 規格書期望機率 · 匯出 CSV</div>
+    </div>
+  </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <div class="input-group">
+      <label>遊戲網址（含 token）</label>
+      <input type="text" id="urlInput" placeholder="https://example.com/game?token=xxx" />
+    </div>
+    <div class="input-group">
+      <label>收集局數</label>
+      <input type="number" id="roundsInput" value="100" min="1" max="99999" />
+    </div>
+    <div class="btn-group">
+      <button id="startBtn">▶ 開始收集</button>
+      <button id="stopBtn" disabled>⏹ 停止</button>
+      <button id="clearBtn">🗑 清空</button>
+    </div>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="status-dot" id="statusDot"></div>
+    <span id="statusCount">尚未開始</span>
+    <div class="progress-wrap">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+    <span id="statusMsg">填入網址與局數後點「開始收集」</span>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+
+    <!-- Single M2 -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ Single 2同</span>
+        <span class="stat-card-total" id="total-m2">共 0 次抽中</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>倍率</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-m2"></tbody>
+      </table>
+    </div>
+
+    <!-- Single M3 -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ Single 3同</span>
+        <span class="stat-card-total" id="total-m3">共 0 次抽中</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>倍率</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-m3"></tbody>
+      </table>
+    </div>
+
+    <!-- AnyDouble -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ AnyDouble</span>
+        <span class="stat-card-total" id="total-ad">共 0 次抽中</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>倍率</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-ad"></tbody>
+      </table>
+    </div>
+
+    <!-- AnyTriple -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ AnyTriple</span>
+        <span class="stat-card-total" id="total-at">共 0 次抽中</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>倍率</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-at"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- 主注區獎勵類型 + 旁注區獎勵類型 -->
+  <div class="stats-grid" style="margin-bottom:12px;">
+
+    <!-- CGBOV2-17 主注區獎勵類型 -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ 主注區獎勵類型</span>
+        <span class="stat-card-total" id="total-bonus-type">共 0 次 Single</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>類型</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-bonus-type">
+          <tr>
+            <td>2同</td><td>33.33%</td>
+            <td id="cnt-bt-m2">0</td>
+            <td id="pct-bt-m2">—</td>
+            <td id="diff-bt-m2" class="diff-none">—</td>
+          </tr>
+          <tr>
+            <td>3同</td><td>66.67%</td>
+            <td id="cnt-bt-m3">0</td>
+            <td id="pct-bt-m3">—</td>
+            <td id="diff-bt-m3" class="diff-none">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CGBOV2-18 旁注區獎勵類型 -->
+    <div class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-card-title">▌ 旁注區獎勵類型</span>
+        <span class="stat-card-total" id="total-side-pool">共 0 局</span>
+      </div>
+      <table class="stat-table">
+        <thead>
+          <tr>
+            <th>類型</th><th>期望%</th><th>實際次數</th><th>實際%</th><th>差值</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-side-pool">
+          <tr>
+            <td>AD 池</td><td>40.00%</td>
+            <td id="cnt-sp-ad">0</td>
+            <td id="pct-sp-ad">—</td>
+            <td id="diff-sp-ad" class="diff-none">—</td>
+          </tr>
+          <tr>
+            <td>AT 池</td><td>31.00%</td>
+            <td id="cnt-sp-at">0</td>
+            <td id="pct-sp-at">—</td>
+            <td id="diff-sp-at" class="diff-none">—</td>
+          </tr>
+          <tr>
+            <td>Both 池</td><td>29.00%</td>
+            <td id="cnt-sp-both">0</td>
+            <td id="pct-sp-both">—</td>
+            <td id="diff-sp-both" class="diff-none">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- CGBOV2-14 四次是否選顏色命中率 -->
+  <div class="stat-card" style="margin-bottom:12px;">
+    <div class="stat-card-header">
+      <span class="stat-card-title">▌ 四次是否選顏色命中率</span>
+      <span class="stat-card-total" id="total-draw-count">共 0 局</span>
+    </div>
+    <table class="stat-table">
+      <thead>
+        <tr>
+          <th>抽次</th><th>期望%</th><th style="text-align:right;">母數（局）</th><th style="text-align:right;">命中（局）</th><th>實際%</th><th>差值</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-draw-count">
+        <tr>
+          <td>第一抽</td><td>96.00%</td>
+          <td id="base-dc-1" style="text-align:right;">0</td>
+          <td id="cnt-dc-1" style="text-align:right;">0</td>
+          <td id="pct-dc-1">—</td>
+          <td id="diff-dc-1" class="diff-none">—</td>
+        </tr>
+        <tr>
+          <td>第二抽</td><td>79.00%</td>
+          <td id="base-dc-2" style="text-align:right;">0</td>
+          <td id="cnt-dc-2" style="text-align:right;">0</td>
+          <td id="pct-dc-2">—</td>
+          <td id="diff-dc-2" class="diff-none">—</td>
+        </tr>
+        <tr>
+          <td>第三抽</td><td>53.00%</td>
+          <td id="base-dc-3" style="text-align:right;">0</td>
+          <td id="cnt-dc-3" style="text-align:right;">0</td>
+          <td id="pct-dc-3">—</td>
+          <td id="diff-dc-3" class="diff-none">—</td>
+        </tr>
+        <tr>
+          <td>第四抽</td><td>12.00%</td>
+          <td id="base-dc-4" style="text-align:right;">0</td>
+          <td id="cnt-dc-4" style="text-align:right;">0</td>
+          <td id="pct-dc-4">—</td>
+          <td id="diff-dc-4" class="diff-none">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Export Buttons -->
+  <div class="export-row">
+    <button class="export-btn" id="exportStatsBtn" disabled>📊 匯出統計 CSV</button>
+    <button class="export-btn" id="exportDetailBtn" disabled>📋 匯出明細 CSV</button>
+  </div>
+
+  <!-- Debug Log -->
+  <div class="detail-section" id="debugSection" style="margin-bottom:14px;">
+    <div class="detail-header" id="debugToggle">
+      <div class="detail-header-left">
+        <span>🔍 偵錯日誌</span>
+        <span class="detail-count-badge" id="debugCount">(0 筆)</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="debugCopyBtn" style="padding:3px 10px;font-size:11px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);border-radius:4px;cursor:pointer;">複製全部</button>
+        <span class="detail-toggle-icon" id="debugToggleIcon">▲ 收合</span>
+      </div>
+    </div>
+    <div class="detail-body" id="debugBody" style="max-height:160px;padding:8px 14px;font-size:11px;font-family:monospace;color:var(--muted);">
+      <div id="debugLog" style="display:flex;flex-direction:column-reverse;gap:2px;">
+        <span style="color:var(--muted);">等待偵錯訊息...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Table -->
+  <div class="detail-section">
+    <div class="detail-header" id="detailToggle">
+      <div class="detail-header-left">
+        <span>📋 每局明細</span>
+        <span class="detail-count-badge" id="detailCount">(0 局)</span>
+      </div>
+      <span class="detail-toggle-icon" id="toggleIcon">▲ 收合</span>
+    </div>
+    <div class="detail-body" id="detailBody">
+      <table class="detail-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>時間</th>
+            <th>Single 2同</th>
+            <th>Single 3同</th>
+            <th>AnyDouble</th>
+            <th>AnyTriple</th>
+          </tr>
+        </thead>
+        <tbody id="detailTbody">
+          <tr id="emptyRow">
+            <td colspan="6" style="text-align:center;padding:24px;color:var(--muted);">
+              等待資料...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
