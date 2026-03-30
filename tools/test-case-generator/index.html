@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧪 測試案例自動產生工具</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1a1b1e;
+      --surface: #25262b;
+      --surface2: #2c2e33;
+      --border: #373a40;
+      --text: #c9d1d9;
+      --muted: #6e7681;
+      --green: #51cf66;
+      --yellow: #ffd43b;
+      --red: #ff6b6b;
+      --blue: #74c0fc;
+      --purple: #cc5de8;
+      --accent: #1971c2;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+      font-size: 14px;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .page-header { margin-bottom: 24px; }
+    .page-title { font-size: 20px; font-weight: 700; color: #e9ecef; }
+    .page-subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 13px; font-weight: 700; color: var(--blue);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .card-title .badge {
+      background: var(--accent); color: #fff;
+      font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600;
+    }
+
+    .input-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+    .input-group { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+    .input-group label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    input[type="text"], input[type="password"] {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text);
+      padding: 8px 12px; font-size: 13px; outline: none;
+      transition: border-color .2s; width: 100%;
+    }
+    input:focus { border-color: var(--accent); }
+
+    button {
+      padding: 8px 18px; border: none; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: filter .15s, opacity .15s; white-space: nowrap;
+    }
+    button:hover:not(:disabled) { filter: brightness(1.12); }
+    button:disabled { opacity: .45; cursor: default; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-success { background: #2f9e44; color: #fff; }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-large { padding: 12px 32px; font-size: 15px; }
+
+    .upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: 8px;
+      padding: 24px 16px; text-align: center; cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--accent); background: rgba(25,113,194,.06);
+    }
+    .upload-zone.has-file { border-color: var(--green); background: rgba(81,207,102,.05); }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-icon { font-size: 28px; margin-bottom: 8px; }
+    .upload-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .upload-sub { font-size: 11px; color: var(--muted); }
+    .upload-filename { font-size: 12px; color: var(--green); margin-top: 6px; font-weight: 600; }
+    .upload-optional { font-size: 10px; color: var(--yellow); margin-top: 3px; }
+
+    .analyze-row { display: flex; justify-content: center; margin: 20px 0; }
+
+    .status-panel {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;
+      display: none;
+    }
+    .status-panel.visible { display: block; }
+    .status-steps { display: flex; flex-direction: column; gap: 8px; }
+    .step { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+    .step-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+    .step-icon.pending { background: var(--border); color: var(--muted); }
+    .step-icon.running { background: var(--accent); color: #fff; animation: pulse 1s infinite; }
+    .step-icon.done { background: var(--green); color: #fff; }
+    .step-icon.error { background: var(--red); color: #fff; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+    .step-text.muted { color: var(--muted); }
+    .step-text.active { color: var(--text); font-weight: 600; }
+
+    .result-section { display: none; }
+    .result-section.visible { display: block; }
+
+    .result-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;
+    }
+    .result-count { font-size: 13px; color: var(--muted); }
+    .result-count strong { color: var(--green); font-size: 16px; }
+
+    .export-row { display: flex; gap: 10px; }
+
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 900px; }
+    .result-table th {
+      position: sticky; top: 0; background: var(--surface2);
+      padding: 9px 12px; text-align: left;
+      font-size: 11px; color: var(--muted); font-weight: 600;
+      white-space: nowrap; border-bottom: 1px solid var(--border); z-index: 1;
+    }
+    .result-table td {
+      padding: 8px 12px; border-bottom: 1px solid var(--surface2);
+      vertical-align: top; line-height: 1.5;
+    }
+    .result-table tr:hover td { background: rgba(255,255,255,.02); }
+    .result-table tr:last-child td { border-bottom: none; }
+
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 600; white-space: nowrap;
+    }
+    .tag-pos { background: rgba(81,207,102,.15); color: var(--green); }
+    .tag-neg { background: rgba(255,107,107,.15); color: var(--red); }
+    .tag-bnd { background: rgba(255,212,59,.15); color: var(--yellow); }
+    .tag-p0  { background: rgba(255,107,107,.2);  color: #ff8787; }
+    .tag-p1  { background: rgba(116,192,252,.15); color: var(--blue); }
+    .tag-p2  { background: rgba(204,93,232,.15);  color: var(--purple); }
+    .tag-hall  { background: rgba(255,212,59,.1);  color: var(--yellow); }
+    .tag-room  { background: rgba(116,192,252,.1); color: var(--blue); }
+    .tag-err   { background: rgba(255,107,107,.1); color: var(--red); }
+    .tag-admin { background: rgba(204,93,232,.1);  color: var(--purple); }
+
+    .col-no   { width: 120px; font-family: monospace; font-size: 11px; color: var(--muted); }
+    .col-type { width: 80px; }
+    .col-cat  { width: 70px; }
+    .col-lvl  { width: 70px; }
+    .col-mod  { width: 120px; }
+    .col-pre  { width: 130px; color: var(--muted); font-size: 11px; }
+    .col-title { min-width: 220px; }
+    .col-exp  { min-width: 160px; }
+    .col-src  { width: 80px; color: var(--muted); font-size: 11px; }
+    .col-ver  { width: 100px; color: var(--muted); font-size: 11px; }
+
+    .error-box {
+      background: rgba(255,107,107,.1); border: 1px solid rgba(255,107,107,.3);
+      border-radius: 8px; padding: 14px 18px; color: var(--red);
+      font-size: 13px; display: none; margin-bottom: 14px;
+    }
+    .error-box.visible { display: block; }
+
+    /* ── AI 進度條 ── */
+    .ai-progress-wrap { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .ai-progress-bar  { flex: 1; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .ai-progress-fill {
+      height: 100%; width: 0%; background: var(--blue);
+      border-radius: 3px; transition: width .4s ease;
+    }
+    .ai-progress-pct  { font-size: 12px; color: var(--blue); font-weight: 700; min-width: 36px; }
+    .ai-progress-sec  { font-size: 11px; color: var(--muted); min-width: 72px; }
+
+    /* ── 表格捲軸 ── */
+    .table-wrap {
+      max-height: 60vh;
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+    .result-table thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #1e1f22;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    /* 空值標紅 */
+    td.cell-empty { color: var(--red); font-style: italic; }
+    /* 可疑值標橙（規格來源裸格式） */
+    td.cell-suspicious { color: #f08c00; }
+    td.cell-suspicious::after { content: ' ⚠'; font-size: 11px; }
+    /* 失效案例 */
+    tr.row-obsolete td { text-decoration: line-through; color: var(--muted) !important; opacity: 0.55; }
+    tr.row-obsolete td.col-status,
+    tr.row-obsolete td.col-rep { text-decoration: none !important; opacity: 1; }
+    tr.row-obsolete td.col-status { color: var(--red) !important; font-weight: 600; font-size: 11px; }
+    .col-status { width: 60px; text-align: center; white-space: nowrap; }
+    .col-rep    { width: 130px; }
+    /* 跳轉連結 */
+    .case-link { color: var(--blue); cursor: pointer; text-decoration: underline; font-size: 12px; font-weight: 600; }
+    .case-link:hover { color: #a5d8ff; }
+    /* 列 highlight 動畫 */
+    @keyframes highlightRow { 0% { background: rgba(116,192,252,.3); } 100% { background: transparent; } }
+    tr.row-highlight { animation: highlightRow 2s ease-out forwards; }
+    .btn-danger { background: rgba(224,49,49,.12); color: var(--red); border: 1px solid rgba(224,49,49,.35); border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .btn-danger:hover { background: rgba(224,49,49,.25); }
+    /* 空值明細展開區 */
+    .empty-detail {
+      margin-top: 8px; font-size: 11px; color: var(--muted);
+      background: rgba(224,49,49,.06); border: 1px solid rgba(224,49,49,.2);
+      border-radius: 6px; padding: 8px 12px; line-height: 1.8;
+    }
+    .empty-detail strong { color: var(--red); }
+
+    /* ── 快取提示欄 ── */
+    .cache-notice {
+      background: rgba(81,207,102,.07); border: 1px solid rgba(81,207,102,.25);
+      border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;
+      display: none; flex-direction: column; gap: 10px;
+    }
+    .cache-notice.visible { display: flex; }
+    .cache-notice-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .cache-notice-icon { font-size: 18px; flex-shrink: 0; }
+    .cache-notice-name { font-size: 13px; font-weight: 600; color: var(--green); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cache-notice-date { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .cache-notice-actions { display: flex; flex-direction: row; gap: 8px; }
+    .btn-cache-use { background: rgba(81,207,102,.2); color: var(--green); border: 1px solid rgba(81,207,102,.4); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .btn-cache-use:hover { background: rgba(81,207,102,.3); }
+    .btn-cache-use.active { background: var(--green); color: #1a1b1e; }
+    .btn-cache-clr { background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+    .btn-cache-clr:hover { color: var(--red); border-color: var(--red); }
+
+    /* 舊版上傳區使用快取時的覆蓋樣式 */
+    .upload-zone.using-cache { border-color: var(--green); background: rgba(81,207,102,.05); }
+    .upload-zone.using-cache input { pointer-events: none; }
+    .cache-using-label { font-size: 12px; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+    /* ── 附加確認 Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.6);
+      display: none; align-items: center; justify-content: center; z-index: 9999;
+    }
+    .modal-overlay.visible { display: flex; }
+    .modal-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 32px; width: 420px; max-width: 90vw;
+    }
+    .modal-title { font-size: 16px; font-weight: 700; color: #e9ecef; margin-bottom: 10px; }
+    .modal-body  { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+    .modal-body strong { color: var(--text); }
+    .modal-actions { display: flex; gap: 10px; }
+    .modal-actions button { flex: 1; }
+
+    /* ── 左右分欄 ── */
+    .two-col-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 900px) { .two-col-layout { grid-template-columns: 1fr; } }
+    .left-col .analyze-row { margin: 12px 0 0; justify-content: stretch; }
+    .left-col .analyze-row .btn-large { width: 100%; }
+
+    /* ── 提示詞編輯器 ── */
+    .prompt-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+    .prompt-tab {
+      background: none; border: none; padding: 8px 18px;
+      font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+    }
+    .prompt-tab:hover:not(:disabled) { color: var(--text); filter: none; }
+    .prompt-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .prompt-textarea {
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); font-family: 'Courier New', Consolas, monospace;
+      font-size: 11px; padding: 12px; line-height: 1.7;
+      resize: vertical; min-height: 360px; max-height: 70vh; outline: none;
+    }
+    .prompt-textarea:focus { border-color: var(--accent); }
+    .prompt-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 8px; gap: 8px; flex-wrap: wrap;
+    }
+    .prompt-hint { font-size: 11px; color: var(--muted); font-style: italic; }
+    .badge-opt { background: #495057; }
+
+    /* ── 篩選列 ── */
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+    .filter-input { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 6px 10px; font-size: 12px; outline: none; flex: 1; min-width: 140px; }
+    .filter-input:focus { border-color: var(--accent); }
+    .filter-select { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 6px 8px; font-size: 12px; outline: none; cursor: pointer; }
+    .filter-select:focus { border-color: var(--accent); }
+    .filter-count { font-size: 11px; color: var(--blue); font-weight: 600; white-space: nowrap; padding: 0 4px; }
+
+    /* ── 排序表頭 ── */
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { color: var(--blue); }
+    th.sort-asc::after  { content: ' ↑'; color: var(--blue); }
+    th.sort-desc::after { content: ' ↓'; color: var(--blue); }
+
+    /* ── 案例數量細分 ── */
+    .case-breakdown { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .case-breakdown .bd-pos { color: var(--green); font-weight: 600; }
+    .case-breakdown .bd-neg { color: var(--red); font-weight: 600; }
+    .case-breakdown .bd-bnd { color: var(--yellow); font-weight: 600; }
+
+    /* ── 還原進度橫幅 ── */
+    .restore-banner {
+      background: rgba(116,192,252,.08); border: 1px solid rgba(116,192,252,.25);
+      border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;
+      display: none; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .restore-banner.visible { display: flex; }
+    .restore-banner-text { flex: 1; min-width: 200px; font-size: 13px; color: var(--text); }
+
+    /* ── 版本前綴輸入欄 ── */
+    .ver-prefix-row { margin-top: 12px; padding: 12px 14px; background: var(--surface2); border-radius: 7px; border: 1px solid var(--border); }
+    .ver-prefix-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 7px; display: flex; align-items: center; gap: 8px; }
+    .ver-prefix-badge { background: rgba(255,212,59,.15); color: var(--yellow); border: 1px solid rgba(255,212,59,.3); border-radius: 10px; font-size: 10px; padding: 1px 8px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+    .ver-prefix-input { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 7px 11px; font-size: 13px; outline: none; width: 100%; transition: border-color .2s; font-family: 'Courier New', monospace; }
+    .ver-prefix-input:focus { border-color: var(--accent); }
+    .ver-prefix-input.required-empty { border-color: var(--red) !important; box-shadow: 0 0 0 2px rgba(255,107,107,.15); }
+    .ver-prefix-hint { font-size: 11px; color: var(--muted); margin-top: 7px; line-height: 1.6; }
+
+    /* ── 補填空值按鈕 ── */
+    .btn-refill { background: rgba(116,192,252,.12); color: var(--blue); border: 1px solid rgba(116,192,252,.3); border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .btn-refill:hover:not(:disabled) { background: rgba(116,192,252,.22); }
+    .btn-refill:disabled { opacity: .45; cursor: default; }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="page-title">🧪 測試案例自動產生工具</div>
+    <div class="page-subtitle">上傳規格書 PDF → AI 自動產出結構化測試案例 → 匯出 CSV / Excel</div>
+  </div>
+
+  <!-- Step 1: API Key -->
+  <div class="card">
+    <div class="card-title">
+      <span>🔑 Gemini API Key</span>
+      <span class="badge">Step 1</span>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>API Key（儲存於本機，不會上傳）</label>
+        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off" />
+      </div>
+      <button class="btn-primary" id="saveKeyBtn">💾 儲存</button>
+      <button class="btn-secondary" id="toggleKeyBtn">👁 顯示</button>
+    </div>
+  </div>
+
+  <!-- 兩欄版面 -->
+  <div class="two-col-layout">
+
+    <!-- 左欄：上傳規格書 + 開始分析 -->
+    <div class="left-col">
+
+      <div class="card">
+        <div class="card-title">
+          <span>📄 上傳規格書</span>
+          <span class="badge">Step 2</span>
+        </div>
+        <div class="upload-grid">
+
+          <div>
+            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">新版規格書（必填）</div>
+            <div class="upload-zone" id="newZone">
+              <input type="file" id="newFile" accept=".pdf" />
+              <div class="upload-icon">📋</div>
+              <div class="upload-label">拖曳或點擊上傳</div>
+              <div class="upload-sub">新版 / 完整規格書 PDF</div>
+              <div class="upload-filename" id="newFileName"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">舊版規格書（選填）</div>
+
+            <!-- 快取提示欄 -->
+            <div class="cache-notice" id="cacheNotice">
+              <div class="cache-notice-left">
+                <div class="cache-notice-icon">💾</div>
+                <div>
+                  <div class="cache-notice-name" id="cacheFilename">—</div>
+                  <div class="cache-notice-date" id="cacheSavedAt"></div>
+                </div>
+              </div>
+              <div class="cache-notice-actions">
+                <button class="btn-cache-use" id="useAsOldBtn">📋 用作舊版比對</button>
+                <button class="btn-cache-clr" id="clearCacheBtn">🗑 清除</button>
+              </div>
+            </div>
+
+            <div class="upload-zone" id="oldZone">
+              <input type="file" id="oldFile" accept=".pdf" />
+              <div class="upload-icon">📁</div>
+              <div class="upload-label" id="oldZoneLabel">拖曳或點擊上傳</div>
+              <div class="upload-sub" id="oldZoneSub">舊版規格書 PDF（差異比對用）</div>
+              <div class="upload-filename" id="oldFileName"></div>
+              <div class="upload-optional" id="oldZoneOptional">⚠ 不上傳則產出完整案例</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 版本前綴（差異比對 + 已有案例時必填）-->
+        <div class="ver-prefix-row" id="verPrefixRow" style="display:none;">
+          <div class="ver-prefix-label">
+            版本前綴
+            <span class="ver-prefix-badge" id="verPrefixBadge">差異比對選填</span>
+          </div>
+          <input type="text" id="verPrefixInput" class="ver-prefix-input"
+                 placeholder="如 V2、patch1、hotfix1" maxlength="20" />
+          <div class="ver-prefix-hint" id="verPrefixHint">
+            新增案例的編號將加上此前綴（如 <strong id="verPrefixExample">V2_POS_LOB_001</strong>），避免與既有案例編號重複
+          </div>
+        </div>
+      </div>
+
+      <div class="analyze-row">
+        <button class="btn-success btn-large" id="analyzeBtn" disabled>🚀 開始分析</button>
+      </div>
+
+    </div>
+
+    <!-- 右欄：提示詞編輯器 -->
+    <div class="right-col">
+      <div class="card">
+        <div class="card-title">
+          <span>✏️ 提示詞編輯</span>
+          <span class="badge badge-opt">選填</span>
+        </div>
+        <div class="prompt-tabs">
+          <button class="prompt-tab active" id="tabFull">全量產出模式</button>
+          <button class="prompt-tab" id="tabDiff">差異比對模式</button>
+        </div>
+        <textarea id="promptFullTA" class="prompt-textarea" spellcheck="false"></textarea>
+        <textarea id="promptDiffTA" class="prompt-textarea" spellcheck="false" style="display:none;"></textarea>
+        <div class="prompt-footer">
+          <div>
+            <div class="prompt-hint">💡 提示詞可自由編輯，修改後立即生效</div>
+            <div class="prompt-hint" style="margin-top:3px;">⚠️ 請勿刪除 {{SPEC}} 標記，這是規格書的插入位置</div>
+          </div>
+          <button class="btn-secondary" style="padding:5px 14px;font-size:12px;" id="resetPromptBtn">🔄 重置為預設</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 還原進度橫幅 -->
+  <div class="restore-banner" id="restoreBanner">
+    <span class="restore-banner-text" id="restoreText">🔄 找到上次儲存的案例</span>
+    <button class="btn-primary" id="restoreBtn">✅ 還原</button>
+    <button class="btn-secondary" id="restoreSkipBtn">✖ 略過</button>
+  </div>
+
+  <!-- 附加確認 Modal -->
+  <div class="modal-overlay" id="appendModal">
+    <div class="modal-box">
+      <div class="modal-title">已有分析結果</div>
+      <div class="modal-body">
+        目前已有 <strong id="existingCount">0</strong> 個測試案例，<br>
+        本次分析結果要如何處理？
+      </div>
+      <div class="modal-actions">
+        <button class="btn-primary" id="modalAppendBtn">➕ 附加到現有結果</button>
+        <button class="btn-secondary" id="modalReplaceBtn">🗑 清空並重新分析</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="status-panel" id="statusPanel">
+    <div class="status-steps">
+      <div class="step" id="step1">
+        <div class="step-icon pending" id="step1Icon">1</div>
+        <span class="step-text muted" id="step1Text">解析 PDF 文字...</span>
+      </div>
+      <div class="step" id="step2">
+        <div class="step-icon pending" id="step2Icon">2</div>
+        <div style="flex:1;min-width:0;">
+          <span class="step-text muted" id="step2Text">呼叫 Gemini AI 分析...</span>
+          <div class="ai-progress-wrap" id="aiProgressWrap" style="display:none;">
+            <div class="ai-progress-bar">
+              <div class="ai-progress-fill" id="aiProgressFill"></div>
+            </div>
+            <span class="ai-progress-pct" id="aiProgressPct">0%</span>
+            <span class="ai-progress-sec" id="aiProgressSec">已等待 0 秒</span>
+          </div>
+        </div>
+      </div>
+      <div class="step" id="step3">
+        <div class="step-icon pending" id="step3Icon">3</div>
+        <span class="step-text muted" id="step3Text">處理並格式化結果...</span>
+      </div>
+      <div class="step" id="stepV" style="display:none;">
+        <div class="step-icon pending" id="stepVIcon">🔍</div>
+        <div style="flex:1;min-width:0;">
+          <span class="step-text muted" id="stepVText">驗證舊案例是否符合新規格...</span>
+          <div class="ai-progress-wrap" id="stepVProgressWrap" style="display:none;">
+            <div class="ai-progress-bar">
+              <div class="ai-progress-fill" id="stepVProgressFill"></div>
+            </div>
+            <span class="ai-progress-pct" id="stepVProgressPct">0%</span>
+            <span class="ai-progress-sec" id="stepVProgressSec">已等待 0 秒</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div class="error-box" id="errorBox"></div>
+
+  <!-- Result -->
+  <div class="result-section" id="resultSection">
+    <div class="card">
+      <div class="result-header">
+        <div>
+          <div class="card-title" style="margin-bottom:4px;">✅ 產出完成</div>
+          <div class="result-count">
+            共產出 <strong id="caseCount">0</strong> 個測試案例
+            <span id="emptyWarn" style="display:none;margin-left:10px;font-size:12px;color:var(--red);font-weight:600;cursor:pointer;" title="點擊展開明細"></span>
+          </div>
+          <div class="case-breakdown" id="caseBreakdown"></div>
+          <div class="empty-detail" id="emptyWarnDetail" style="display:none;"></div>
+        </div>
+        <div class="export-row">
+          <button class="btn-danger" id="removeObsoleteBtn" style="display:none;">🗑 移除失效案例（0 筆）</button>
+          <button class="btn-refill" id="refillBtn" style="display:none;">🔧 補填空值（0 筆）</button>
+          <button class="btn-primary" id="exportCsvBtn">📊 匯出 XLSX</button>
+          <button class="btn-secondary" id="reAnalyzeBtn">🔄 重新分析</button>
+        </div>
+      </div>
+      <!-- 篩選列 -->
+      <div class="filter-bar" id="filterBar">
+        <input type="text" id="filterText" class="filter-input" placeholder="🔍 搜尋編號、標題、功能模組..." />
+        <select id="filterType" class="filter-select">
+          <option value="">全部類型</option>
+          <option value="正面">正面</option>
+          <option value="負面">負面</option>
+          <option value="邊界">邊界</option>
+        </select>
+        <select id="filterCat" class="filter-select">
+          <option value="">全部類別</option>
+          <option value="大廳">大廳</option>
+          <option value="房內">房內</option>
+          <option value="異常">異常</option>
+          <option value="後台">後台</option>
+        </select>
+        <select id="filterLevel" class="filter-select">
+          <option value="">全部層級</option>
+          <option value="P0">P0</option>
+          <option value="P1">P1</option>
+          <option value="P2">P2</option>
+        </select>
+        <select id="filterStatus" class="filter-select">
+          <option value="">全部狀態</option>
+          <option value="valid">✅ 有效</option>
+          <option value="obsolete">❌ 失效</option>
+        </select>
+        <span id="filterCount" class="filter-count"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th class="col-status">狀態</th>
+              <th class="col-rep">取代者</th>
+              <th class="col-no sortable" data-sort-field="編號">編號</th>
+              <th class="col-type sortable" data-sort-field="測試類型">測試類型</th>
+              <th class="col-cat sortable" data-sort-field="類別">類別</th>
+              <th class="col-lvl sortable" data-sort-field="影響層級">影響層級</th>
+              <th class="col-mod sortable" data-sort-field="功能模組">功能模組</th>
+              <th class="col-pre">前置條件</th>
+              <th class="col-title">測試標題</th>
+              <th class="col-exp">預期結果</th>
+              <th class="col-src">規格來源</th>
+              <th class="col-ver">版本標籤</th>
+            </tr>
+          </thead>
+          <tbody id="resultTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
