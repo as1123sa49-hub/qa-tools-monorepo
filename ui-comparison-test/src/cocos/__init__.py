@@ -1,2 +1,0 @@
-"""Cocos Creator helper modules."""
-

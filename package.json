@@ -1,23 +1,13 @@
 {
-  "name": "playwright-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "bonus-v2-stat-log-checker",
+  "version": "2.0.0",
+  "private": true,
+  "description": "500X 機率統計與前端 LOG 攔截腳本",
   "scripts": {
-    "test": "npx playwright test",
-    "test:it": "npx playwright test tests/integration",
-    "test:reg": "npx playwright test tests/regression",
-    "report": "npx playwright show-report reports/playwright",
-    "clean": "powershell -ExecutionPolicy Bypass -File .\\clean.ps1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@playwright/test": "^1.56.0"
+    "start:500x": "node tools/500x/server.js"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
-    "express": "^5.2.1"
+    "express": "^4.21.0",
+    "playwright-core": "^1.49.0"
   }
 }
