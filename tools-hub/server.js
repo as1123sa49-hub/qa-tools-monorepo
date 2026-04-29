@@ -9,7 +9,7 @@ const IMG_COMPARE_URL = process.env.IMG_COMPARE_URL || 'http://127.0.0.1:3000';
 const BONUS_500X_URL = process.env.BONUS_500X_URL || 'http://127.0.0.1:3001';
 
 const hubDir = __dirname;
-const toolsRoot = path.join(__dirname, 'tools');
+const toolsRoot = path.join(__dirname, '..', 'tools');
 const testCaseGeneratorDir = path.join(toolsRoot, 'test-case-generator');
 const frontLogCompareDir = path.join(toolsRoot, 'front-log-compare');
 const frontLogCheckerScript = path.join(toolsRoot, 'front-log-checker', 'intercept.js');
