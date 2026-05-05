@@ -28,11 +28,17 @@ npm start
 > - `img-compare`：預設 `http://localhost:3000`
 > - `bonus-v2`：預設 `http://localhost:3001`
 >
-> Hub 會透過路由掛到：
-> - `/apps/img-compare`
-> - `/apps/bonus-v2`
-> - `/apps/front-log-compare`
-> - 對應 API 代理：`/api/bonus-v2/*` → 3001 的 `/api/*`
+> Hub 會透過路由掛到（頁面／靜態）：
+> - `/apps/img-compare/` → 轉發至 img-compare 服務
+> - `/apps/bonus-v2/` → 轉發至 bonus-v2（500X）服務
+> - `/apps/test-case-generator/` → 本目錄旁 `tools/test-case-generator` 靜態檔
+> - `/apps/front-log-compare/` → 本目錄旁 `tools/front-log-compare` 靜態檔
+>
+> **API 代理（與 iframe 同源有關，請以 `server.js` 為準）：**
+> - **Bonus V2** 前端使用絕對路徑 `/api/events`（SSE）、`POST /api/start`、`POST /api/stop`；Hub 將這三條轉到 **`BONUS_500X_URL`**（預設 3001），否則經 Hub 開工具時會誤打到 img-compare。
+> - **圖片比對** 的 `/api/session`、`POST /api/capture`、`/api/img/...` 等其餘 **`/api/*`** 轉到 **`IMG_COMPARE_URL`**（預設 3000）。
+> - **`GET /api/docs/:tool`**：Hub 內建，回傳各工具 README。
+> - **`GET /snippets/front-log-checker.txt`**：Hub 內建，提供攔截腳本內容。
 >
 > 可用環境變數覆蓋：
 > - `PORT`：Hub 入口埠號（預設 `3010`）

@@ -56,16 +56,6 @@ app.use(
 );
 app.get('/apps/img-compare', (_req, res) => res.redirect('/apps/img-compare/'));
 
-// bonus-v2 API proxy (hub origin → 3001 /api/*)
-app.use(
-  '/api/bonus-v2',
-  createProxyMiddleware({
-    target: BONUS_500X_URL,
-    changeOrigin: true,
-    pathRewrite: (path) => `/api${path}`
-  })
-);
-
 app.get('/api/docs/:tool', (req, res) => {
   const tool = req.params.tool;
   const readmePath = readmeMap[tool];
@@ -85,6 +75,15 @@ app.get('/api/docs/:tool', (req, res) => {
     return res.status(500).json({ error: 'failed to load readme' });
   }
 });
+
+// bonus-v2 前端使用絕對路徑 /api/events、/api/start、/api/stop；須在通配 /api 轉 img-compare 之前轉到 500X 服務。
+app.use(
+  createProxyMiddleware({
+    target: BONUS_500X_URL,
+    changeOrigin: true,
+    pathFilter: ['/api/events', '/api/start', '/api/stop']
+  })
+);
 
 app.use(
   '/api',
