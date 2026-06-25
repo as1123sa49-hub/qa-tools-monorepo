@@ -54,6 +54,161 @@
     .input-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
     .input-group { display: flex; flex-direction: column; gap: 5px; flex: 1; }
     .input-group label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .model-select-row { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .model-select-row select { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 8px 10px; font-size: 13px; outline: none; cursor: pointer; max-width: 420px; }
+    .model-select-row select:focus { border-color: var(--accent); }
+    .model-note { font-size: 12px; line-height: 1.55; color: var(--muted); padding: 10px 12px; background: var(--surface2); border-radius: 6px; border: 1px solid var(--border); max-width: 720px; }
+    .model-note strong { color: var(--text); font-weight: 600; }
+
+    .xlsx-sheet-panel {
+      display: none; margin-top: 12px; padding: 12px 14px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .xlsx-sheet-panel.visible { display: block; }
+    .xlsx-sheet-title { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+    .xlsx-sheet-hint { font-size: 11px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+    .xlsx-sheet-file-picker {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+    }
+    .xlsx-sheet-file-chip {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer;
+    }
+    .xlsx-sheet-file-chip:hover { border-color: var(--accent); }
+    .xlsx-sheet-file-chip.active {
+      border-color: var(--blue); color: var(--blue); background: rgba(116, 192, 252, 0.08);
+    }
+    .xlsx-sheet-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .xlsx-sheet-actions button {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer;
+    }
+    .xlsx-sheet-actions button:hover { border-color: var(--accent); }
+    .xlsx-sheet-list { display: flex; flex-direction: column; gap: 6px; max-height: 200px; overflow-y: auto; }
+    .xlsx-sheet-item {
+      display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text); cursor: pointer;
+    }
+    .xlsx-sheet-item.suggested-skip { color: var(--muted); }
+    .xlsx-sheet-item .sheet-meta { font-size: 10px; color: var(--muted); }
+    .spec-parse-note { font-size: 11px; color: var(--green); margin-top: 8px; line-height: 1.5; }
+
+    .manual-index-wrap {
+      margin-top: 12px; padding: 12px 14px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+      display: flex; flex-direction: column;
+      max-height: min(520px, 58vh);
+      min-height: 0;
+    }
+    .manual-index-wrap.disabled { opacity: 0.45; pointer-events: none; }
+    .manual-index-title { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 6px; flex-shrink: 0; }
+    .manual-index-hint { font-size: 11px; color: var(--muted); margin-bottom: 10px; line-height: 1.55; flex-shrink: 0; }
+    .manual-index-scroll {
+      flex: 1 1 auto;
+      min-height: 140px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-gutter: stable;
+      margin: 0 -4px 8px 0;
+      padding-right: 4px;
+    }
+    .manual-index-scroll::-webkit-scrollbar { width: 8px; }
+    .manual-index-scroll::-webkit-scrollbar-thumb {
+      background: #4a4d55; border-radius: 4px;
+    }
+    .manual-index-scroll::-webkit-scrollbar-thumb:hover { background: #5c6069; }
+    .manual-index-scroll { scrollbar-width: thin; scrollbar-color: #4a4d55 transparent; }
+    .manual-index-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .manual-index-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .manual-index-card-head {
+      display: grid;
+      grid-template-columns: 28px 1fr 1.2fr 1fr 28px;
+      gap: 6px; align-items: end;
+      padding: 8px 8px 4px 4px;
+    }
+    .manual-index-card-head .manual-index-field input {
+      width: 100%; box-sizing: border-box;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); padding: 5px 6px; font-size: 11px;
+    }
+    .manual-index-card-head .manual-index-field input:focus { border-color: var(--accent); outline: none; }
+    .manual-index-field-label {
+      font-size: 9px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .3px; margin-bottom: 2px;
+    }
+    .manual-index-toggle {
+      background: transparent; border: none; color: var(--muted);
+      font-size: 10px; cursor: pointer; padding: 4px; line-height: 1;
+      align-self: center;
+    }
+    .manual-index-l3-preview {
+      grid-column: 1 / -1;
+      font-size: 10px; color: var(--muted); line-height: 1.45;
+      padding: 0 8px 6px 32px; min-height: 0;
+    }
+    .manual-index-card:not(.collapsed) .manual-index-l3-preview,
+    .manual-index-card.collapsed .manual-index-l3-preview:empty { display: none; }
+    .manual-index-card-body {
+      padding: 0 10px 10px 36px;
+      border-top: 1px solid var(--border);
+    }
+    .manual-index-card.collapsed .manual-index-card-body { display: none; }
+    .manual-index-card-body label {
+      display: block; font-size: 10px; color: var(--muted); margin: 8px 0 4px;
+    }
+    .manual-index-card-body textarea.manual-l3 {
+      width: 100%; box-sizing: border-box; resize: vertical;
+      min-height: 72px; max-height: 160px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); padding: 6px 8px; font-size: 11px; line-height: 1.45;
+      font-family: inherit;
+    }
+    .manual-index-card-body textarea.manual-l3:focus { border-color: var(--accent); outline: none; }
+    .manual-index-del {
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 4px; padding: 4px 6px; font-size: 10px; cursor: pointer;
+    }
+    .manual-index-del:hover { border-color: var(--red); color: var(--red); }
+    .manual-index-add {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 5px 12px; font-size: 11px; cursor: pointer;
+      flex-shrink: 0; align-self: flex-start;
+    }
+    .manual-index-add:hover { border-color: var(--accent); }
+
+    .coverage-panel {
+      display: none; margin: 12px 0 0; padding: 14px 16px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .coverage-panel.visible { display: block; }
+    .coverage-title { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+    .coverage-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin-bottom: 12px; }
+    .coverage-prd-list {
+      flex: 1 1 280px; min-height: 56px; max-height: 100px; resize: vertical;
+      background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--text); padding: 8px 10px; font-size: 12px; line-height: 1.45;
+    }
+    .coverage-prd-list:focus { border-color: var(--accent); outline: none; }
+    .coverage-summary { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+    .coverage-summary strong { color: var(--text); }
+    .coverage-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 12px; }
+    .coverage-table th, .coverage-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+    .coverage-table th { color: var(--muted); font-weight: 600; font-size: 11px; }
+    .coverage-table tr.cov-row { cursor: pointer; }
+    .coverage-table tr.cov-row:hover td { background: rgba(116, 192, 252, 0.06); }
+    .cov-badge-ok { color: var(--green); font-weight: 600; }
+    .cov-badge-warn { color: var(--yellow); font-weight: 600; }
+    .cov-badge-miss { color: var(--red); font-weight: 600; }
+    .coverage-modules { font-size: 11px; color: var(--muted); line-height: 1.6; }
+    .coverage-modules span { color: var(--text); }
+    .coverage-baseline { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 12px; }
+    .coverage-gap-list { margin-top: 6px; max-height: 120px; overflow-y: auto; font-size: 11px; color: var(--muted); }
+    .coverage-gap-list div { padding: 2px 0; }
+    .coverage-hint { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
 
     input[type="text"], input[type="password"] {
       background: var(--bg); border: 1px solid var(--border);
@@ -168,6 +323,10 @@
     .tag-p0  { background: rgba(255,107,107,.2);  color: #ff8787; }
     .tag-p1  { background: rgba(116,192,252,.15); color: var(--blue); }
     .tag-p2  { background: rgba(204,93,232,.15);  color: var(--purple); }
+    .tag-plt  { background: rgba(81,207,102,.12); color: var(--green); }
+    .tag-l1   { background: rgba(255,107,107,.18); color: #ff8787; font-size: 10px; }
+    .tag-l2   { background: rgba(255,140,0,.18); color: #ffa94d; font-size: 10px; }
+    .tag-l3   { background: rgba(81,207,102,.15); color: #69db7c; font-size: 10px; }
     .tag-hall  { background: rgba(255,212,59,.1);  color: var(--yellow); }
     .tag-room  { background: rgba(116,192,252,.1); color: var(--blue); }
     .tag-err   { background: rgba(255,107,107,.1); color: var(--red); }
@@ -177,12 +336,17 @@
     .col-type { width: 80px; }
     .col-cat  { width: 70px; }
     .col-lvl  { width: 70px; }
-    .col-mod  { width: 120px; }
+    .col-main { width: 100px; font-size: 11px; }
+    .col-tier { width: 44px; text-align: center; }
+    .col-feat { width: 140px; }
     .col-pre  { width: 130px; color: var(--muted); font-size: 11px; }
     .col-title { min-width: 220px; }
     .col-exp  { min-width: 160px; }
     .col-src  { width: 80px; color: var(--muted); font-size: 11px; }
     .col-ver  { width: 100px; color: var(--muted); font-size: 11px; }
+    .col-mod-batch { width: 52px; font-size: 11px; text-align: center; }
+    .col-mod-class { width: 88px; font-size: 11px; }
+    .col-mod-module { width: 140px; font-family: monospace; font-size: 10px; color: var(--blue); }
 
     .error-box {
       background: rgba(255,107,107,.1); border: 1px solid rgba(255,107,107,.3);
@@ -224,6 +388,18 @@
     tr.row-obsolete td.col-status,
     tr.row-obsolete td.col-rep { text-decoration: none !important; opacity: 1; }
     tr.row-obsolete td.col-status { color: var(--red) !important; font-weight: 600; font-size: 11px; }
+    tr.row-dup-suspect td { background: rgba(255,212,59,.06); }
+    tr.row-dup-suspect td.col-check,
+    tr.row-dup-suspect td.col-status { background: rgba(255,212,59,.1); }
+    .col-check { width: 32px; text-align: center; }
+    .col-check input { cursor: pointer; }
+    .batch-retry-bar {
+      display: none; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 10px 14px; margin-bottom: 12px; border-radius: 8px;
+      background: rgba(255,107,107,.08); border: 1px solid rgba(255,107,107,.25);
+      font-size: 12px;
+    }
+    .batch-retry-bar.visible { display: flex; }
     .col-status { width: 60px; text-align: center; white-space: nowrap; }
     .col-rep    { width: 130px; }
     /* 跳轉連結 */
@@ -315,6 +491,18 @@
     }
     .prompt-hint { font-size: 11px; color: var(--muted); font-style: italic; }
     .badge-opt { background: #495057; }
+    .saved-prompt-panel { display: none; }
+    .saved-prompt-toolbar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px;
+    }
+    .saved-prompt-select {
+      flex: 1; min-width: 140px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); padding: 6px 10px; font-size: 12px; outline: none;
+    }
+    .saved-prompt-select:focus { border-color: var(--accent); }
+    .saved-prompt-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+    .saved-prompt-actions .btn-secondary { padding: 5px 12px; font-size: 12px; }
+    .saved-prompt-meta { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 
     /* ── 篩選列 ── */
     .filter-bar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
@@ -379,6 +567,139 @@
     .btn-refill:hover:not(:disabled) { background: rgba(116,192,252,.22); }
     .btn-refill:disabled { opacity: .45; cursor: default; }
 
+    .result-view-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .result-view-tab {
+      background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .result-view-tab.active { border-color: var(--blue); color: var(--blue); background: rgba(116,192,252,.1); }
+    #mindmapPanel, #duplicatePanel { display: none; }
+    #mindmapPanel.visible { display: block; }
+    .result-card-shell { position: relative; }
+    .mindmap-loading-overlay {
+      display: none; position: absolute; inset: 0; z-index: 30;
+      background: rgba(12, 14, 20, .82); border-radius: inherit;
+      align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+    }
+    .mindmap-loading-overlay.visible { display: flex; }
+    .mindmap-loading-spinner {
+      width: 28px; height: 28px; border: 3px solid rgba(116,192,252,.25);
+      border-top-color: var(--blue); border-radius: 50%;
+      animation: mm-spin .8s linear infinite;
+    }
+    @keyframes mm-spin { to { transform: rotate(360deg); } }
+    .mindmap-loading-text { font-size: 13px; font-weight: 600; color: var(--blue); }
+    .mindmap-loading-sub { font-size: 11px; color: var(--muted); }
+    #duplicatePanel.visible { display: block; }
+    .dup-panel-summary { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+    .dup-empty { font-size: 13px; color: var(--muted); padding: 24px; text-align: center; }
+    tr.dup-group-header td {
+      background: rgba(255,212,59,.12); color: var(--yellow); font-weight: 700; font-size: 12px;
+      padding: 10px 12px; border-bottom: 1px solid rgba(255,212,59,.2);
+    }
+    .result-view-tab .tab-badge { color: var(--yellow); margin-left: 4px; }
+    .mindmap-hint { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+    .mindmap-sub-tabs { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .mindmap-sub-tab {
+      background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .mindmap-sub-tab.active { border-color: var(--blue); color: var(--blue); background: rgba(116,192,252,.1); }
+    .mindmap-browse { display: flex; gap: 12px; min-height: 480px; }
+    .mindmap-nav {
+      width: 240px; flex-shrink: 0; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px; overflow: auto; max-height: 65vh;
+    }
+    .mindmap-nav-search {
+      width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--text); padding: 6px 8px; font-size: 12px; margin-bottom: 8px; outline: none;
+    }
+    .mm-nav-item {
+      display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; user-select: none;
+    }
+    .mm-nav-item:hover { background: rgba(255,255,255,.04); }
+    .mm-nav-item.active { background: rgba(116,192,252,.15); color: var(--blue); }
+    .mm-nav-item .mm-badge {
+      margin-left: auto; font-size: 10px; color: var(--muted); background: var(--surface2);
+      padding: 1px 6px; border-radius: 10px;
+    }
+    .mm-nav-indent-1 { padding-left: 18px; }
+    .mm-nav-indent-2 { padding-left: 32px; }
+    .mm-nav-indent-3 { padding-left: 46px; }
+    .mindmap-detail {
+      flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px; overflow: auto; max-height: 65vh;
+    }
+    .mindmap-detail-header {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .mindmap-detail-actions { display: flex; align-items: center; }
+    .mindmap-detail-title { font-size: 13px; font-weight: 600; color: var(--text); }
+    .mm-case-card {
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 0; margin-bottom: 12px; user-select: text; overflow: hidden;
+    }
+    .mm-case-card-head {
+      display: flex; align-items: center; gap: 6px; padding: 10px 12px;
+      cursor: pointer; user-select: none;
+    }
+    .mm-case-card-head:hover { background: rgba(255,255,255,.03); }
+    .mm-card-toggle {
+      background: none; border: none; color: var(--muted); font-size: 10px;
+      padding: 0 2px; cursor: pointer; flex-shrink: 0; width: 14px; text-align: center;
+    }
+    .mm-card-icon { opacity: .7; font-size: 12px; flex-shrink: 0; }
+    .mm-case-card-title { font-size: 13px; font-weight: 600; flex: 1; min-width: 0; }
+    .mm-card-step-badge {
+      font-size: 10px; color: var(--muted); background: var(--bg);
+      padding: 1px 6px; border-radius: 8px; flex-shrink: 0;
+    }
+    .mm-case-card-body { padding: 0 14px 12px 32px; }
+    .mm-case-card.collapsed .mm-case-card-body { display: none; }
+    .mm-case-raw-hint {
+      font-size: 10px; color: var(--muted); margin-bottom: 6px; opacity: .85;
+      word-break: break-all;
+    }
+    .mm-prio {
+      font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;
+      background: rgba(255,107,107,.2); color: #ff8787; flex-shrink: 0;
+    }
+    .mm-prio.p0 { background: rgba(255,107,107,.25); color: #ff8787; }
+    .mm-prio.p1 { background: rgba(116,192,252,.2); color: var(--blue); }
+    .mm-prio.p2 { background: rgba(204,93,232,.15); color: var(--purple); }
+    .mm-case-desc { font-size: 11px; color: var(--muted); margin-bottom: 8px; word-break: break-all; }
+    .mm-case-pre { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+    .mm-steps-label { font-size: 11px; color: var(--blue); font-weight: 600; margin-bottom: 6px; }
+    .mm-steps { font-size: 12px; line-height: 1.55; margin: 0; padding-left: 18px; }
+    .mm-steps li { margin-bottom: 4px; }
+    .mm-card-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .mm-card-actions button {
+      background: rgba(116,192,252,.12); color: var(--blue); border: 1px solid rgba(116,192,252,.3);
+      border-radius: 5px; padding: 4px 10px; font-size: 11px; font-weight: 600; cursor: pointer;
+    }
+    .mm-card-actions button:hover { background: rgba(116,192,252,.22); }
+    .mindmap-tree-wrap {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 16px; overflow: auto; max-height: 65vh; min-height: 420px;
+    }
+    .mm-tree-main { margin-bottom: 20px; }
+    .mm-tree-main-title {
+      font-size: 12px; font-weight: 700; color: var(--green); margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .mm-tree-branch {
+      display: flex; align-items: flex-start; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .mm-folder-pill {
+      display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px;
+      background: rgba(81,207,102,.08); border: 1px solid rgba(81,207,102,.25);
+      border-radius: 16px; font-size: 11px; font-weight: 600; color: var(--green); white-space: nowrap;
+    }
+    .mm-tree-connector { color: var(--muted); font-size: 12px; padding-top: 6px; }
+    .mm-tree-branch .mm-case-card { margin-bottom: 0; min-width: 280px; max-width: 420px; flex: 1; }
+
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -388,26 +709,35 @@
 
   <div class="page-header">
     <div class="page-title">🧪 測試案例自動產生工具</div>
-    <div class="page-subtitle">上傳規格書 PDF → AI 自動產出結構化測試案例 → 匯出 XLSX</div>
+    <div class="page-subtitle">上傳規格書（PDF / DOCX / XLSX / CSV）→ AI 自動產出結構化測試案例 → 匯出 XLSX</div>
   </div>
 
   <!-- Step 1: API Key -->
   <div class="card">
     <div class="card-title">
-      <span>🔑 Gemini API Key</span>
+      <span id="apiCardTitle">🔑 AI API 設定</span>
       <span class="badge">Step 1</span>
+    </div>
+    <div class="model-select-row" style="margin-top:0;margin-bottom:12px;">
+      <div class="input-group" style="max-width:420px;">
+        <label>AI 提供者</label>
+        <select id="llmProviderSelect">
+          <option value="gemini">Google Gemini（直連，免費額度）</option>
+          <option value="siraya">Siraya（Gemini / GPT / Claude 聚合）</option>
+        </select>
+      </div>
     </div>
     <div class="input-row">
       <div class="input-group">
-        <label>API Key（儲存於本機，不會上傳）</label>
+        <label id="apiKeyLabel">Gemini API Key（儲存於本機，不會上傳）</label>
         <input type="password" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off" />
       </div>
       <button class="btn-primary" id="saveKeyBtn">💾 儲存</button>
       <button class="btn-secondary" id="toggleKeyBtn">👁 顯示</button>
-      <button class="btn-help-key" id="helpKeyBtn">❓ 如何取得免費 Key ▾</button>
+      <button class="btn-help-key" id="helpKeyBtn">❓ 如何取得 Key ▾</button>
     </div>
 
-    <!-- API Key 取得說明（展開區）-->
+    <!-- Gemini API Key 取得說明（展開區）-->
     <div class="api-help-box" id="apiHelpBox">
       <div class="api-help-title">📋 取得 Gemini API Key 步驟</div>
       <ol class="api-help-steps">
@@ -432,7 +762,35 @@
           <span>按「💾 儲存」完成，Key 僅儲存在你的瀏覽器，不會上傳</span>
         </li>
       </ol>
-      <div class="api-help-note">💡 免費額度：每天 500 次請求，無需綁定信用卡</div>
+      <div class="api-help-note">💡 免費額度依模型而異，請至 <a class="api-help-link" href="https://ai.dev/rate-limit" target="_blank" rel="noopener">ai.dev/rate-limit</a> 查看；多 PRD 分批建議選 3.1 Flash Lite</div>
+    </div>
+
+    <!-- Siraya API Key 取得說明（展開區）-->
+    <div class="api-help-box" id="sirayaHelpBox">
+      <div class="api-help-title">📋 取得 Siraya API Key 步驟</div>
+      <ol class="api-help-steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>前往 Siraya：<a class="api-help-link" href="https://siray.ai" target="_blank" rel="noopener">siray.ai</a> 註冊帳號</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>至設定頁建立 API Key</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>複製 Key 貼到上方輸入框，按「💾 儲存」</span>
+        </li>
+      </ol>
+      <div class="api-help-note">💡 Siraya 支援 Gemini、GPT、Claude 等模型，按用量計費；端點為 OpenAI 相容 API（llm.siraya.ai）</div>
+    </div>
+
+    <div class="model-select-row">
+      <div class="input-group" style="max-width:420px;">
+        <label id="llmModelLabel">AI 模型</label>
+        <select id="llmModelSelect"></select>
+      </div>
+      <div class="model-note" id="llmModelNote"></div>
     </div>
   </div>
 
@@ -449,22 +807,35 @@
         </div>
       <div class="mode-switch">
         <button class="mode-chip active" id="modeSpecBtn">新舊規格比對</button>
+        <button class="mode-chip" id="modeMultiBtn">多規格生成</button>
+        <button class="mode-chip" id="modeModularBtn">多批模組化</button>
+        <button class="mode-chip" id="modeMindmapBtn">XLSX轉心智圖</button>
         <button class="mode-chip" id="modeBaselineBtn">匯入Case比對新版</button>
       </div>
-        <div class="upload-grid">
+        <div class="upload-grid" id="uploadGrid">
 
-          <div>
-            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">新版規格書（必填）</div>
+          <div id="newFileCol">
+            <div id="newFileTitle" style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">新版規格書（必填）</div>
             <div class="upload-zone" id="newZone">
-              <input type="file" id="newFile" accept=".pdf" />
+              <input type="file" id="newFile" accept=".pdf,.docx,.xlsx,.csv" />
               <div class="upload-icon">📋</div>
               <div class="upload-label">拖曳或點擊上傳</div>
-              <div class="upload-sub">新版 / 完整規格書 PDF</div>
+              <div class="upload-sub" id="newFileSub">PDF / DOCX / XLSX / CSV</div>
               <div class="upload-filename" id="newFileName"></div>
+            </div>
+            <div class="manual-index-wrap" id="manualIndexWrap" style="display:none;">
+              <div class="manual-index-title">✏️ 手動模組索引（與上傳檔二選一）</div>
+              <div class="manual-index-hint">
+                每張卡片 = 一個 L2 功能群。標題列填 L1、L2、說明；點 <strong>▼</strong> 展開子項，在 L3 區<strong>每行一項</strong>（Enter 換行）。上傳索引檔時停用。
+              </div>
+              <div class="manual-index-scroll" id="manualIndexScroll">
+                <div class="manual-index-list" id="manualIndexList"></div>
+              </div>
+              <button type="button" class="manual-index-add" id="manualIndexAddRow">＋ 新增功能群</button>
             </div>
           </div>
 
-          <div>
+          <div id="oldFileCol">
             <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">舊版規格書（選填）</div>
 
             <!-- 快取提示欄 -->
@@ -483,10 +854,10 @@
             </div>
 
             <div class="upload-zone" id="oldZone">
-              <input type="file" id="oldFile" accept=".pdf" />
+              <input type="file" id="oldFile" accept=".pdf,.docx,.xlsx,.csv" />
               <div class="upload-icon">📁</div>
               <div class="upload-label" id="oldZoneLabel">拖曳或點擊上傳</div>
-              <div class="upload-sub" id="oldZoneSub">舊版規格書 PDF（差異比對用）</div>
+              <div class="upload-sub" id="oldZoneSub">PDF / DOCX / XLSX / CSV（差異比對用）</div>
               <div class="upload-filename" id="oldFileName"></div>
               <div class="upload-optional" id="oldZoneOptional">⚠ 不上傳則產出完整案例</div>
             </div>
@@ -503,6 +874,104 @@
             </div>
           </div>
 
+          <div id="supplementWrap" style="display:none;">
+            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">功能規格書（必填，可多份）</div>
+            <div class="upload-zone" id="supplementZone">
+              <input type="file" id="supplementFiles" accept=".pdf,.docx,.xlsx,.csv" multiple />
+              <div class="upload-icon">📚</div>
+              <div class="upload-label">拖曳或點擊上傳</div>
+              <div class="upload-sub">完整 PRD 規格內容（依檔名順序分批分析）</div>
+              <div class="upload-filename" id="supplementFileName"></div>
+              <div class="upload-optional">右側為實際 PRD；左側為模組索引（上傳檔或手動表）</div>
+            </div>
+            <div id="multiOptionsWrap" style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+              <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text);cursor:pointer;">
+                <input type="checkbox" id="multiAutoBatch" checked />
+                依功能規格書自動分批（2 份以上，每批索引 + 1 份規格書）
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text);cursor:pointer;">
+                <input type="checkbox" id="multiUseAiDupConfirm" />
+                使用 AI 確認模糊重複群組（需 API Key）
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);cursor:pointer;">
+                <input type="checkbox" id="multiRemarkDup" />
+                重新標記疑似重複（重試／重跑時勾選）
+              </label>
+              <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+                自動分批時每批完成即更新表格；分析完成前無法匯出。建議 Master PRD 檔名排前以便先產總則。
+              </div>
+            </div>
+          </div>
+
+          <div id="mindmapUploadWrap" style="display:none; grid-column: 1 / -1;">
+            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">
+              TestCase 檔案（CSV / XLSX，讀取第一個工作表）
+            </div>
+            <div class="upload-zone" id="mindmapFileZone">
+              <input type="file" id="mindmapFile" accept=".csv,.xlsx" />
+              <div class="upload-icon">🧠</div>
+              <div class="upload-label">拖曳或點擊上傳</div>
+              <div class="upload-sub">匯入有效案例，合併為平台案例卡並產生目錄樹</div>
+              <div class="upload-filename" id="mindmapFileName"></div>
+            </div>
+          </div>
+
+          <div id="modularizeWrap" style="display:none; grid-column: 1 / -1;">
+            <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">
+              多批 TestCase（CSV / XLSX，至少 2 份，第 3 份選填）
+            </div>
+            <div class="upload-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+              <div>
+                <div style="font-size:10px;color:var(--blue);font-weight:600;margin-bottom:6px;">批次 A（必填）</div>
+                <div class="upload-zone" id="batchAZone">
+                  <input type="file" id="batchFileA" accept=".csv,.xlsx" />
+                  <div class="upload-icon">📗</div>
+                  <div class="upload-label">拖曳或點擊上傳</div>
+                  <div class="upload-filename" id="batchFileAName"></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:10px;color:var(--blue);font-weight:600;margin-bottom:6px;">批次 B（必填）</div>
+                <div class="upload-zone" id="batchBZone">
+                  <input type="file" id="batchFileB" accept=".csv,.xlsx" />
+                  <div class="upload-icon">📘</div>
+                  <div class="upload-label">拖曳或點擊上傳</div>
+                  <div class="upload-filename" id="batchFileBName"></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:10px;color:var(--muted);font-weight:600;margin-bottom:6px;">批次 C（選填）</div>
+                <div class="upload-zone" id="batchCZone">
+                  <input type="file" id="batchFileC" accept=".csv,.xlsx" />
+                  <div class="upload-icon">📙</div>
+                  <div class="upload-label">拖曳或點擊上傳</div>
+                  <div class="upload-filename" id="batchFileCName"></div>
+                </div>
+              </div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;color:var(--text);cursor:pointer;">
+              <input type="checkbox" id="modUseAiConfirm" />
+              使用 AI 確認疑似相同群組（需 API Key）
+            </label>
+            <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;">
+              依「測試類型 + 規則族」（如 Email 必填、格式錯誤）分群，非逐字比對預期結果；入口跳轉與頁內編輯不併群。
+            </div>
+          </div>
+
+        </div>
+
+        <!-- XLSX 工作表勾選（上傳 xlsx 時顯示）-->
+        <div class="xlsx-sheet-panel" id="xlsxSheetPanel">
+          <div class="xlsx-sheet-title" id="xlsxSheetTitle">📑 選擇要分析的工作表</div>
+          <div class="xlsx-sheet-hint" id="xlsxSheetHint">工作表名稱因檔案而異；建議略過的項目已預設取消勾選。勾選 <strong>2 個以上</strong>工作表時，全量產出將<strong>逐工作表分批</strong>呼叫 API。</div>
+          <div class="xlsx-sheet-file-picker" id="xlsxSheetFilePicker" style="display:none;"></div>
+          <div class="xlsx-sheet-actions">
+            <button type="button" id="xlsxSheetSelectAll">全選</button>
+            <button type="button" id="xlsxSheetSelectNone">全不選</button>
+            <button type="button" id="xlsxSheetSelectSuggested">選建議項目</button>
+          </div>
+          <div class="xlsx-sheet-list" id="xlsxSheetList"></div>
+          <div class="spec-parse-note" id="specParseNote" style="display:none;"></div>
         </div>
 
         <!-- 版本前綴（差異比對 + 已有案例時必填）-->
@@ -536,14 +1005,32 @@
           <button class="prompt-tab active" id="tabFull">全量產出模式</button>
           <button class="prompt-tab" id="tabDiff">差異比對模式</button>
           <button class="prompt-tab" id="tabBaseline">匯入Case比對模式</button>
+          <button class="prompt-tab" id="tabMulti">多規格生成模式</button>
+          <button class="prompt-tab" id="tabSaved">📁 已儲存提示詞</button>
         </div>
         <textarea id="promptFullTA" class="prompt-textarea" spellcheck="false"></textarea>
         <textarea id="promptDiffTA" class="prompt-textarea" spellcheck="false" style="display:none;"></textarea>
         <textarea id="promptBaselineTA" class="prompt-textarea" spellcheck="false" style="display:none;"></textarea>
-        <div class="prompt-footer">
-          <div>
-            <div class="prompt-hint">💡 提示詞可自由編輯，修改後立即生效</div>
-            <div class="prompt-hint" style="margin-top:3px;">⚠️ 請勿刪除模板標記（如 {{SPEC}} / {{NEW_SPEC}} / {{OLD_SPEC}} / {{BASELINE_CASES}}）</div>
+        <textarea id="promptMultiTA" class="prompt-textarea" spellcheck="false" style="display:none;"></textarea>
+        <div id="savedPromptPanel" class="saved-prompt-panel">
+          <div class="saved-prompt-toolbar">
+            <select id="savedPromptSelect" class="saved-prompt-select" title="選擇已儲存的提示詞"></select>
+            <div class="saved-prompt-actions">
+              <button type="button" class="btn-secondary" id="savedPromptAddBtn">➕ 新增</button>
+              <button type="button" class="btn-secondary" id="savedPromptRenameBtn">✏️ 重新命名</button>
+              <button type="button" class="btn-secondary" id="savedPromptDeleteBtn">🗑 刪除</button>
+              <button type="button" class="btn-secondary" id="savedPromptCopyBtn">📋 複製</button>
+              <button type="button" class="btn-secondary" id="savedPromptInsertBtn">📥 插入到模式分頁</button>
+            </div>
+          </div>
+          <div class="saved-prompt-meta" id="savedPromptMeta"></div>
+          <textarea id="promptSavedTA" class="prompt-textarea" spellcheck="false" placeholder="在此撰寫可重複使用的提示詞片段（例如 Slot 機種規則）…"></textarea>
+          <div class="prompt-hint" style="margin-top:8px;">💾 內容儲存於本機瀏覽器，重整後仍保留；分析前請「插入」或複製到全量／差異等模式分頁</div>
+        </div>
+        <div class="prompt-footer" id="promptModeFooter">
+          <div id="promptModeHints">
+            <div class="prompt-hint">💡 提示詞可自由編輯，修改後立即生效（重整後恢復預設）</div>
+            <div class="prompt-hint" style="margin-top:3px;">⚠️ 請勿刪除模板標記（如 {{SPEC}} / {{INDEX_NAME}} / {{CURRENT_PRD}} / {{SUPPLEMENT_LIST}} / {{EXISTING_RULES}} 等）</div>
           </div>
           <button class="btn-secondary" style="padding:5px 14px;font-size:12px;" id="resetPromptBtn">🔄 重置為預設</button>
         </div>
@@ -584,7 +1071,7 @@
       <div class="step" id="step2">
         <div class="step-icon pending" id="step2Icon">2</div>
         <div style="flex:1;min-width:0;">
-          <span class="step-text muted" id="step2Text">呼叫 Gemini AI 分析...</span>
+          <span class="step-text muted" id="step2Text">呼叫 AI 分析...</span>
           <div class="ai-progress-wrap" id="aiProgressWrap" style="display:none;">
             <div class="ai-progress-bar">
               <div class="ai-progress-fill" id="aiProgressFill"></div>
@@ -619,7 +1106,12 @@
 
   <!-- Result -->
   <div class="result-section" id="resultSection">
-    <div class="card">
+    <div class="card result-card-shell">
+      <div id="mindmapLoadingOverlay" class="mindmap-loading-overlay" aria-hidden="true">
+        <div class="mindmap-loading-spinner"></div>
+        <div class="mindmap-loading-text" id="mindmapLoadingText">重新產生平台樹狀圖…</div>
+        <div class="mindmap-loading-sub" id="mindmapLoadingSub">讀取檔案並組織案例結構</div>
+      </div>
       <div class="result-header">
         <div>
           <div class="card-title" style="margin-bottom:4px;">✅ 產出完成</div>
@@ -636,15 +1128,45 @@
           <div class="empty-detail" id="emptyWarnDetail" style="display:none;"></div>
         </div>
         <div class="export-row">
+          <button class="btn-danger" id="deleteSelectedBtn" style="display:none;">🗑 刪除選取（0 筆）</button>
           <button class="btn-danger" id="removeObsoleteBtn" style="display:none;">🗑 移除失效案例（0 筆）</button>
           <button class="btn-refill" id="refillBtn" style="display:none;">🔧 補填空值（0 筆）</button>
           <button class="btn-primary" id="exportCsvBtn">📊 匯出 XLSX</button>
+          <button class="btn-refill" id="exportMindmapBtn" style="display:none;">🧠 匯出心智圖</button>
           <button class="btn-secondary" id="reAnalyzeBtn">🔄 重新分析</button>
         </div>
       </div>
+
+      <div class="result-view-tabs" id="resultViewTabs" style="display:none;">
+        <button type="button" class="result-view-tab active" id="viewTabTable" data-view="table">📋 案例表格</button>
+        <button type="button" class="result-view-tab" id="viewTabDuplicate" data-view="duplicate" style="display:none;">🔍 重複比對</button>
+        <button type="button" class="result-view-tab" id="viewTabMindmap" data-view="mindmap" style="display:none;">🧠 平台樹狀圖</button>
+      </div>
+
+      <div class="batch-retry-bar" id="batchRetryBar">
+        <span id="batchRetryText">部分 PRD 批次分析失敗</span>
+        <button type="button" class="btn-secondary" id="batchRetryBtn">🔄 重試失敗批次</button>
+      </div>
+
+      <div class="coverage-panel" id="coveragePanel">
+        <div class="coverage-title">📊 PRD 覆蓋率（依規格來源統計，不需 AI）</div>
+        <div class="coverage-tools">
+          <textarea id="coveragePrdList" class="coverage-prd-list" placeholder="每行一個功能規格書檔名，例：&#10;玩家管理PRD.docx&#10;存提紀錄.xlsx"></textarea>
+          <button type="button" class="btn-secondary" id="coverageSyncPrdBtn" title="從多規格上傳區帶入檔名">📎 帶入上傳清單</button>
+          <button type="button" class="btn-secondary" id="coverageCalcBtn">計算覆蓋率</button>
+          <button type="button" class="btn-secondary" id="coverageImportCasesBtn">📥 匯入案例</button>
+          <button type="button" class="btn-secondary" id="coverageBaselineBtn">📋 上傳基準</button>
+          <button type="button" class="btn-secondary" id="coverageClearBaselineBtn" style="display:none;">清除基準</button>
+        </div>
+        <input type="file" id="coverageCasesFile" accept=".csv,.xlsx" hidden />
+        <input type="file" id="coverageBaselineFile" accept=".csv,.xlsx" hidden />
+        <div id="coverageReport"></div>
+        <div class="coverage-hint">點 PRD 列可篩選表格（再點一次取消）。匯出 XLSX 一律含全部案例。基準檔用於比對「少在哪個功能群」（如 135 vs 155），不必重跑全量 AI。</div>
+      </div>
+
       <!-- 篩選列 -->
       <div class="filter-bar" id="filterBar">
-        <input type="text" id="filterText" class="filter-input" placeholder="🔍 搜尋編號、標題、功能模組..." />
+        <input type="text" id="filterText" class="filter-input" placeholder="🔍 搜尋編號、標題、主模組、功能頁面、規格來源..." />
         <select id="filterType" class="filter-select">
           <option value="">全部類型</option>
           <option value="正面">正面</option>
@@ -653,13 +1175,14 @@
         </select>
         <select id="filterCat" class="filter-select">
           <option value="">全部類別</option>
+          <option value="平台">平台</option>
           <option value="大廳">大廳</option>
           <option value="房內">房內</option>
           <option value="異常">異常</option>
           <option value="後台">後台</option>
         </select>
         <select id="filterLevel" class="filter-select">
-          <option value="">全部層級</option>
+          <option value="">全部優先度</option>
           <option value="P0">P0</option>
           <option value="P1">P1</option>
           <option value="P2">P2</option>
@@ -668,21 +1191,29 @@
           <option value="">全部狀態</option>
           <option value="valid">✅ 有效</option>
           <option value="obsolete">❌ 失效</option>
+          <option value="duplicate">⚠ 疑似重複</option>
         </select>
         <span id="filterCount" class="filter-count"></span>
       </div>
 
+      <div id="tablePanel">
       <div class="table-wrap">
         <table class="result-table">
           <thead>
             <tr>
+              <th class="col-mod-batch" id="thModBatch" style="display:none;">批次</th>
+              <th class="col-mod-class" id="thModClass" style="display:none;">分類</th>
+              <th class="col-mod-module" id="thModModule" style="display:none;">建議模組</th>
+              <th class="col-check" id="thSelectAll" title="全選目前篩選結果"><input type="checkbox" id="selectAllCases" /></th>
               <th class="col-status">狀態</th>
               <th class="col-rep">取代者</th>
               <th class="col-no sortable" data-sort-field="編號">編號</th>
               <th class="col-type sortable" data-sort-field="測試類型">測試類型</th>
               <th class="col-cat sortable" data-sort-field="類別">類別</th>
-              <th class="col-lvl sortable" data-sort-field="影響層級" title="P0：核心邏輯，派彩計算、金額結算、賠率判斷&#10;P1：重要功能，UI 顯示、流程完整性、狀態同步&#10;P2：次要細節，文字/翻譯、動畫效果、邊角情境">影響層級 ⓘ</th>
-              <th class="col-mod sortable" data-sort-field="功能模組">功能模組</th>
+              <th class="col-lvl sortable" data-sort-field="優先度" title="P0：核心邏輯&#10;P1：重要功能&#10;P2：次要細節">優先度 ⓘ</th>
+              <th class="col-main sortable" data-sort-field="主模組">主模組</th>
+              <th class="col-tier sortable" data-sort-field="層級">層級</th>
+              <th class="col-feat sortable" data-sort-field="功能頁面/元件">功能頁面/元件</th>
               <th class="col-pre">前置條件</th>
               <th class="col-title">測試標題</th>
               <th class="col-exp">預期結果</th>
@@ -693,11 +1224,74 @@
           <tbody id="resultTbody"></tbody>
         </table>
       </div>
+      </div>
+
+      <div id="duplicatePanel">
+        <p class="dup-panel-summary" id="duplicateSummary"></p>
+        <div class="dup-empty" id="duplicateEmpty" style="display:none;">目前沒有疑似重複的案例</div>
+        <div class="table-wrap">
+          <table class="result-table dup-table">
+            <thead>
+              <tr>
+                <th class="col-check" title="全選所有疑似重複"><input type="checkbox" id="selectAllDup" /></th>
+                <th class="col-no">編號</th>
+                <th class="col-feat">功能頁面/元件</th>
+                <th class="col-title">測試標題</th>
+                <th class="col-exp">預期結果</th>
+                <th class="col-src">規格來源</th>
+                <th class="col-lvl">優先度</th>
+              </tr>
+            </thead>
+            <tbody id="duplicateTbody"></tbody>
+          </table>
+        </div>
+        <p class="mindmap-hint" style="margin-top:10px;">
+          同群組案例已排列在一起，方便比對。刪除多餘項後會自動重新標記；主表「案例表格」仍維持功能頁面/元件排序。
+        </p>
+      </div>
+
+      <div id="mindmapPanel">
+        <div class="mindmap-sub-tabs">
+          <button type="button" class="mindmap-sub-tab active" id="mindmapTabBrowse">📂 目錄瀏覽</button>
+          <button type="button" class="mindmap-sub-tab" id="mindmapTabTree">🌳 樹狀總覽</button>
+          <span style="flex:1"></span>
+          <button type="button" class="btn-secondary" id="mindmapTreeCollapseAllBtn" style="display:none;padding:4px 10px;font-size:12px;">▼ 全部收合</button>
+          <button type="button" class="btn-secondary" id="mindmapTreeExpandAllBtn" style="display:none;padding:4px 10px;font-size:12px;">▶ 全部展開</button>
+        </div>
+        <div id="mindmapBrowseView" class="mindmap-browse">
+          <div class="mindmap-nav">
+            <input type="text" id="mindmapNavSearch" class="mindmap-nav-search" placeholder="🔍 搜尋模組…" />
+            <div id="mindmapNavTree"></div>
+          </div>
+          <div class="mindmap-detail">
+            <div class="mindmap-detail-header">
+              <div class="mindmap-detail-title" id="mindmapDetailTitle">請從左側選擇節點</div>
+              <div class="mindmap-detail-actions" id="mindmapDetailActions" style="display:none;gap:6px;flex-wrap:wrap;">
+                <button type="button" class="btn-secondary" id="mindmapCollapseAllBtn" style="padding:4px 10px;font-size:12px;">▼ 全部收合</button>
+                <button type="button" class="btn-secondary" id="mindmapExpandAllBtn" style="padding:4px 10px;font-size:12px;">▶ 全部展開</button>
+                <button type="button" class="btn-secondary" id="mindmapCopyAllBtn" style="padding:4px 12px;font-size:12px;">📋 複製本頁全部</button>
+              </div>
+            </div>
+            <div id="mindmapDetailCards"></div>
+          </div>
+        </div>
+        <div id="mindmapTreeView" class="mindmap-tree-wrap" style="display:none;"></div>
+        <p class="mindmap-hint">
+          功能路徑支援 <code>父/子</code>、<code>父-子</code>、<code>父_子</code>（只拆第一層，正規化為父/子）。裸名稱有子項時歸資料夾「總覽」卡。點標題列可收合卡片。
+        </p>
+      </div>
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.3/mermaid.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
+  <script>
+    if (typeof mermaid !== 'undefined') {
+      mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' });
+    }
+  </script>
 </body>
 </html>
