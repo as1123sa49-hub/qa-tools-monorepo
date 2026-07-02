@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { userOutputRoot } from './user-context.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -53,8 +54,8 @@ export async function loadConfig() {
   }
 }
 
-export function outputDir(cfg, env, lang, slotId) {
-  return path.join(TOOL_ROOT, cfg.outputRoot, env, lang, slotId);
+export function outputDir(cfg, env, lang, slotId, userId) {
+  return path.join(userOutputRoot(userId, cfg), env, lang, slotId);
 }
 
 /**

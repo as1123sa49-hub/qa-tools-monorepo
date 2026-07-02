@@ -181,6 +181,10 @@
     <div class="card-title">2. 擷取設定</div>
     <div class="input-row">
       <div class="input-group">
+        <label>使用者 ID（多人隔離工作區）</label>
+        <input type="text" id="userIdInput" value="default" placeholder="default" autocomplete="username">
+      </div>
+      <div class="input-group">
         <label>環境</label>
         <select id="envSelect">
           <option value="uat" selected>UAT (COMBO_UAT)</option>
@@ -200,7 +204,7 @@
       </div>
     </div>
     <div class="hint">
-      選定<strong>一個語系</strong>後，對複選工作表對應的多個 Slot 依序擷取，產出 <code>captures/環境/語系/SlotXXX/</code>。語系對應大廳選單（英文、繁中、泰文…）已內建於設定檔。
+      選定<strong>一個語系</strong>後，對複選工作表對應的多個 Slot 依序擷取，產出 <code>data/使用者ID/captures/環境/語系/SlotXXX/</code>。不同使用者 ID 的登入狀態與截圖互不干擾。
     </div>
     <div style="margin-top:12px">
       <button id="startBtn" class="btn-primary" disabled>開始擷取</button>

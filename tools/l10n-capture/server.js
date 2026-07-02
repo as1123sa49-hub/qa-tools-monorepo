@@ -7,6 +7,7 @@ import { loadKeysFromSheet } from './lib/xlsx-node.js';
 import { verifySlot, verifyPastedKey, reOcrSourceFile } from './lib/verify.js';
 import { sumVerifyReports, formatUsageSummary } from './lib/usage-summary.js';
 import { PROVIDER_SIRAYA, getApiKeyLabel } from './lib/llm-providers.js';
+import { resolveUserIdFromRequest, userOutputRoot } from './lib/user-context.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -15,10 +16,28 @@ const PORT = process.env.PORT || 3847;
 app.use(express.json({ limit: '100mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-let running = false;
-let verifying = false;
-let activeCaptureAbort = null;
-let activeVerifyAbort = null;
+/** @type {Map<string, { abortController: AbortController, running: boolean }>} */
+const captureByUser = new Map();
+/** @type {Map<string, { abortController: AbortController, running: boolean }>} */
+const verifyByUser = new Map();
+
+function getUserJob(map, userId) {
+  return map.get(userId);
+}
+
+function abortUserJob(map, userId) {
+  const job = map.get(userId);
+  if (job?.abortController) job.abortController.abort();
+}
+
+function setUserJob(map, userId, job) {
+  map.set(userId, job);
+}
+
+function clearUserJob(map, userId, ac) {
+  const job = map.get(userId);
+  if (job?.abortController === ac) map.delete(userId);
+}
 
 function bindClientAbort(req, res, onAbort) {
   const disconnect = () => {
@@ -37,8 +56,15 @@ function ndjsonWrite(res, obj, isAborted = () => false) {
   }
 }
 
-app.get('/api/status', (_req, res) => {
-  res.json({ running, verifying });
+app.get('/api/status', (req, res) => {
+  const userId = resolveUserIdFromRequest(req);
+  const cap = getUserJob(captureByUser, userId);
+  const ver = getUserJob(verifyByUser, userId);
+  res.json({
+    userId,
+    running: cap?.running ?? false,
+    verifying: ver?.running ?? false,
+  });
 });
 
 app.get('/api/lang-map', async (_req, res) => {
@@ -51,7 +77,8 @@ app.get('/api/lang-map', async (_req, res) => {
 });
 
 app.post('/api/capture', async (req, res) => {
-  activeCaptureAbort?.abort();
+  const userId = resolveUserIdFromRequest(req);
+  abortUserJob(captureByUser, userId);
 
   const { env = 'uat', lang, langs: langsBody, slots = ['Slot015'], sheetName } = req.body || {};
   const slotList = Array.isArray(slots) ? slots : String(slots).split(',').map(s => s.trim()).filter(Boolean);
@@ -80,15 +107,13 @@ app.post('/api/capture', async (req, res) => {
     });
   }
 
-  running = true;
-  const logs = [];
-  const results = [];
   const ac = new AbortController();
-  activeCaptureAbort = ac;
+  setUserJob(captureByUser, userId, { abortController: ac, running: true });
   bindClientAbort(req, res, () => {
     ac.abort();
-    running = false;
-    if (activeCaptureAbort === ac) activeCaptureAbort = null;
+    const job = getUserJob(captureByUser, userId);
+    if (job?.abortController === ac) job.running = false;
+    clearUserJob(captureByUser, userId, ac);
   });
 
   res.setHeader('Content-Type', 'application/x-ndjson');
@@ -96,9 +121,10 @@ app.post('/api/capture', async (req, res) => {
   res.flushHeaders?.();
 
   const write = obj => {
-    logs.push(obj);
     ndjsonWrite(res, obj, () => ac.signal.aborted);
   };
+
+  const results = [];
 
   try {
     const continueOnSlotError = cfg.continueOnSlotError !== false;
@@ -113,6 +139,7 @@ app.post('/api/capture', async (req, res) => {
           lang: langCode,
           slotId,
           sheetName: sheet,
+          userId,
           continueOnError: continueOnSlotError,
           onLog: msg => write({ type: 'log', message: msg }),
         });
@@ -144,14 +171,16 @@ app.post('/api/capture', async (req, res) => {
   } catch (err) {
     if (!ac.signal.aborted) write({ type: 'error', message: String(err.message || err) });
   } finally {
-    running = false;
-    if (activeCaptureAbort === ac) activeCaptureAbort = null;
+    const job = getUserJob(captureByUser, userId);
+    if (job?.abortController === ac) job.running = false;
+    clearUserJob(captureByUser, userId, ac);
     if (!res.writableEnded) res.end();
   }
 });
 
 app.post('/api/verify', async (req, res) => {
-  activeVerifyAbort?.abort();
+  const userId = resolveUserIdFromRequest(req);
+  abortUserJob(verifyByUser, userId);
 
   const {
     env = 'uat',
@@ -186,13 +215,13 @@ app.post('/api/verify', async (req, res) => {
   langList = [...new Set(langList.map(s => String(s).trim()).filter(Boolean))];
   if (!langList.length) return res.status(400).json({ error: '請指定至少一個語系' });
 
-  verifying = true;
   const ac = new AbortController();
-  activeVerifyAbort = ac;
+  setUserJob(verifyByUser, userId, { abortController: ac, running: true });
   bindClientAbort(req, res, () => {
     ac.abort();
-    verifying = false;
-    if (activeVerifyAbort === ac) activeVerifyAbort = null;
+    const job = getUserJob(verifyByUser, userId);
+    if (job?.abortController === ac) job.running = false;
+    clearUserJob(verifyByUser, userId, ac);
   });
 
   res.setHeader('Content-Type', 'application/x-ndjson');
@@ -220,7 +249,7 @@ app.post('/api/verify', async (req, res) => {
           }
           write({ type: 'log', message: `  ${items.length} 個 key，開始 OCR…` });
 
-          const imagesDir = outputDir(cfg, env, langCode, slotId);
+          const imagesDir = outputDir(cfg, env, langCode, slotId, userId);
           const report = await verifySlot({
             imagesDir,
             items,
@@ -260,8 +289,9 @@ app.post('/api/verify', async (req, res) => {
   } catch (err) {
     if (!ac.signal.aborted) write({ type: 'error', message: String(err.message || err) });
   } finally {
-    verifying = false;
-    if (activeVerifyAbort === ac) activeVerifyAbort = null;
+    const job = getUserJob(verifyByUser, userId);
+    if (job?.abortController === ac) job.running = false;
+    clearUserJob(verifyByUser, userId, ac);
     if (!res.writableEnded) res.end();
   }
 });
@@ -289,6 +319,8 @@ app.post('/api/verify-reocr', async (req, res) => {
   if (!xlsxBase64) return res.status(400).json({ error: '缺少翻譯表（XLSX）' });
   if (!apiKey) return res.status(400).json({ error: `缺少 ${getApiKeyLabel(llmProvider)}` });
 
+  const userId = resolveUserIdFromRequest(req);
+
   try {
     const cfg = await loadConfig();
     const buffer = Buffer.from(xlsxBase64, 'base64');
@@ -298,7 +330,7 @@ app.post('/api/verify-reocr', async (req, res) => {
       return res.status(400).json({ error: `工作表 ${sheet} 無 ${lang} 字串` });
     }
 
-    const imagesDir = outputDir(cfg, env, lang, slotId);
+    const imagesDir = outputDir(cfg, env, lang, slotId, userId);
     const report = await reOcrSourceFile({
       imagesDir,
       sourceFile,
@@ -384,8 +416,9 @@ app.get('/api/captures/:env/:lang/:slotId/:file', async (req, res) => {
   }
   try {
     const cfg = await loadConfig();
-    const filePath = path.join(outputDir(cfg, env, lang, slotId), file);
-    const root = path.resolve(path.join(__dirname, cfg.outputRoot));
+    const userId = resolveUserIdFromRequest(req);
+    const filePath = path.join(outputDir(cfg, env, lang, slotId, userId), file);
+    const root = path.resolve(userOutputRoot(userId, cfg));
     const resolved = path.resolve(filePath);
     if (!resolved.startsWith(root)) return res.status(403).send('forbidden');
     res.sendFile(resolved);

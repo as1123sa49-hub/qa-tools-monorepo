@@ -77,6 +77,7 @@ const startBtn = document.getElementById('startBtn');
 const logBox = document.getElementById('logBox');
 const slotsInput = document.getElementById('slotsInput');
 const envSelect = document.getElementById('envSelect');
+const userIdInput = document.getElementById('userIdInput');
 const langSelect = document.getElementById('langSelect');
 const apiKeyInput = document.getElementById('apiKeyInput');
 const apiKeyLabel = document.getElementById('apiKeyLabel');
@@ -93,6 +94,7 @@ const manualStatus = document.getElementById('manualStatus');
 const reverifyPasteBtn = document.getElementById('reverifyPasteBtn');
 
 const LANG_STORAGE_KEY = 'l10n_capture_lang';
+const USER_ID_STORAGE_KEY = 'l10n_capture_user_id';
 const SESSION_LOGS_KEY = 'l10n_capture_session_logs';
 const SESSION_REPORTS_KEY = 'l10n_capture_session_reports';
 const SESSION_REPORT_TAB_KEY = 'l10n_capture_session_report_tab';
@@ -118,6 +120,24 @@ let manualPasteBusy = false;
 let reocrBusy = false;
 /** @type {Map<string, Blob>} */
 const manualImageBlobs = new Map();
+
+function getUserId() {
+  const raw = (userIdInput?.value || sessionStorage.getItem(USER_ID_STORAGE_KEY) || '').trim();
+  return raw || 'default';
+}
+
+function persistUserId() {
+  const id = getUserId();
+  if (userIdInput) userIdInput.value = id;
+  sessionStorage.setItem(USER_ID_STORAGE_KEY, id);
+}
+
+function apiJsonHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'X-User-Id': getUserId(),
+  };
+}
 /** @type {Map<string, string>} */
 const manualImageUrls = new Map();
 
@@ -204,8 +224,9 @@ async function runPasteVerify(rep, key, blob) {
     const imageBase64 = arrayBufferToBase64(await blob.arrayBuffer());
     const res = await fetch('/api/verify-paste', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: apiJsonHeaders(),
       body: JSON.stringify({
+        userId: getUserId(),
         key,
         expectedText: row.expected,
         imageBase64,
@@ -599,6 +620,8 @@ slotsInput.addEventListener('change', onSlotsInputChanged);
 slotsInput.addEventListener('blur', onSlotsInputChanged);
 slotsInput.addEventListener('input', updateStartBtn);
 envSelect.addEventListener('change', persistSessionSlots);
+userIdInput?.addEventListener('change', persistUserId);
+userIdInput?.addEventListener('input', persistUserId);
 
 startBtn.addEventListener('click', async () => {
   if (!xlsxFile) return;
@@ -628,8 +651,9 @@ startBtn.addEventListener('click', async () => {
   try {
     const res = await fetch('/api/capture', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: apiJsonHeaders(),
       body: JSON.stringify({
+        userId: getUserId(),
         env: envSelect.value,
         lang,
         slots,
@@ -694,7 +718,8 @@ function escapeHtml(s) {
 
 function captureImageUrl(env, lang, slotId, file) {
   if (!file || !env || !lang || !slotId) return '';
-  return `/api/captures/${encodeURIComponent(env)}/${encodeURIComponent(lang)}/${encodeURIComponent(slotId)}/${encodeURIComponent(file)}`;
+  const q = `userId=${encodeURIComponent(getUserId())}`;
+  return `/api/captures/${encodeURIComponent(env)}/${encodeURIComponent(lang)}/${encodeURIComponent(slotId)}/${encodeURIComponent(file)}?${q}`;
 }
 
 function filteredRows(rep) {
@@ -747,8 +772,9 @@ async function runReOcr(rep, sourceFile, key) {
     const xlsxBase64 = arrayBufferToBase64(await xlsxFile.arrayBuffer());
     const res = await fetch('/api/verify-reocr', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: apiJsonHeaders(),
       body: JSON.stringify({
+        userId: getUserId(),
         env: rep.env || envSelect.value,
         lang: rep.lang || getSelectedLangCodes()[0] || 'bn',
         slotId: rep.slotId,
@@ -1110,8 +1136,9 @@ verifyBtn.addEventListener('click', async () => {
     const xlsxBase64 = arrayBufferToBase64(await xlsxFile.arrayBuffer());
     const res = await fetch('/api/verify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: apiJsonHeaders(),
       body: JSON.stringify({
+        userId: getUserId(),
         env: envSelect.value,
         lang,
         slots,
@@ -1204,6 +1231,9 @@ document.addEventListener('paste', e => {
 });
 
 loadLangMap().then(async () => {
+  const savedUser = sessionStorage.getItem(USER_ID_STORAGE_KEY);
+  if (userIdInput && savedUser) userIdInput.value = savedUser;
+  persistUserId();
   restoreSessionSlots();
   restoreSessionLogs();
   restoreSessionReports();

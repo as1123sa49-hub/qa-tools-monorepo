@@ -9,6 +9,7 @@ import {
   windowArgs,
   forceWindowBounds,
 } from './config.js';
+import { sanitizeUserId, userAuthPath } from './user-context.js';
 import { saveCaptureMeta } from './capture-meta.js';
 import { ensureDir } from './browser-utils.js';
 import { prepareLobby, enterSlotWithLangCheck } from './lobby-flow.js';
@@ -30,12 +31,14 @@ import {
  * @param {string} [opts.sheetName]
  * @param {function} [opts.onLog]
  * @param {boolean} [opts.continueOnError] 失敗時回傳 partial result 不 throw（整批繼續下一款）
+ * @param {string} [opts.userId] 使用者工作區 ID（預設 default）
  */
 export async function runSlotCapture(opts) {
   const cfg = await loadConfig();
+  const userId = sanitizeUserId(opts.userId);
   const continueOnError = opts.continueOnError ?? cfg.continueOnSlotError !== false;
   const templatesDir = path.join(TOOL_ROOT, 'templates', 'game');
-  const authPath = path.join(TOOL_ROOT, cfg.authFile);
+  const authPath = userAuthPath(userId, cfg);
   const onLog = opts.onLog || (() => {});
 
   const browser = await chromium.launch({
@@ -49,7 +52,7 @@ export async function runSlotCapture(opts) {
   const page = await context.newPage();
   await forceWindowBounds(page, cfg);
 
-  const outDir = outputDir(cfg, opts.env, opts.lang, opts.slotId);
+  const outDir = outputDir(cfg, opts.env, opts.lang, opts.slotId, userId);
   await ensureDir(outDir);
   cfg._outDir = outDir;
 
@@ -121,9 +124,10 @@ export async function runSlotCapture(opts) {
   return result;
 }
 
-export async function saveAuthInteractive() {
+export async function saveAuthInteractive(userId) {
   const cfg = await loadConfig();
-  const authPath = path.join(TOOL_ROOT, cfg.authFile);
+  const uid = sanitizeUserId(userId);
+  const authPath = userAuthPath(uid, cfg);
   await ensureDir(path.dirname(authPath));
 
   const browser = await chromium.launch({

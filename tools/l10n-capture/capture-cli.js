@@ -13,6 +13,7 @@ function parseArgs(argv) {
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--save-auth') args.saveAuth = true;
+    else if (a === '--user') args.user = argv[++i];
     else if (a === '--env') args.env = argv[++i];
     else if (a === '--lang') args.lang = argv[++i];
     else if (a === '--all-langs') args.allLangs = true;
@@ -28,9 +29,11 @@ async function main() {
   const args = parseArgs(process.argv);
 
   if (args.saveAuth) {
-    await saveAuthInteractive();
+    await saveAuthInteractive(args.user);
     return;
   }
+
+  const userId = args.user;
 
   const env = args.env || 'uat';
   const slots = args.slots?.length ? args.slots : ['Slot015'];
@@ -71,6 +74,7 @@ async function main() {
         lang,
         slotId,
         sheetName,
+        userId,
         onLog: msg => console.log(`  ${msg}`),
       });
     }
