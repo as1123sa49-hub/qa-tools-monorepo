@@ -1,0 +1,21 @@
+{
+  "name": "l10n-capture",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright 擷取遊戲截圖（A 階段產圖，供 l10n-text-verify 比對）",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "capture": "node capture-cli.js",
+    "save-auth": "node capture-cli.js --save-auth",
+    "test": "node --test test/*.test.js",
+    "prepare-templates": "node scripts/prepare-game-templates.mjs",
+    "postinstall": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.21.0",
+    "playwright": "^1.49.0",
+    "sharp": "^0.33.5"
+  }
+}

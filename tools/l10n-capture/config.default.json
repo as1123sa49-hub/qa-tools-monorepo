@@ -1,0 +1,189 @@
+{
+  "lobbyUrl": "https://games-dev.comboburst.com/home/index.html",
+  "viewport": { "width": 1920, "height": 911 },
+  "window": {
+  "position": { "x": 1920, "y": 0 },
+  "size": { "width": 1280, "height": 800 }
+},
+  "authFile": ".auth/lobby.json",
+  "outputRoot": "captures",
+  "debug": true,
+  "envMap": {
+    "dev": { "portalEnv": "COMBO_DEV", "gameHost": "games-dev.comboburst.com" },
+    "uat": { "portalEnv": "COMBO_UAT", "gameHost": "games-uat.comboburst.com" },
+    "pp": { "portalEnv": "COMBO_PP", "gameHost": "games-pp.comboburst.com" }
+  },
+  "langMap": {
+    "en": { "portalLabel": "英文", "urlCode": "en", "urlAliases": ["en-US"] },
+    "zh-Hant": { "portalLabel": "繁中", "urlCode": "zh-Hant" },
+    "zh-Hans": { "portalLabel": "簡中", "urlCode": "zh-Hans" },
+    "th": { "portalLabel": "泰文", "urlCode": "th" },
+    "ko-KR": { "portalLabel": "韓文", "urlCode": "ko-KR" },
+    "pt": { "portalLabel": "葡萄牙文", "urlCode": "pt" },
+    "vi": { "portalLabel": "越南文", "urlCode": "vi" },
+    "id": { "portalLabel": "印尼文", "urlCode": "id" },
+    "my-MM": { "portalLabel": "緬甸文", "urlCode": "my-MM" },
+    "es-ES": { "portalLabel": "西班牙文", "urlCode": "es-ES" },
+    "tr-TR": { "portalLabel": "土耳其文", "urlCode": "tr-TR" },
+    "ja-JP": { "portalLabel": "日文", "urlCode": "ja-JP" },
+    "bn": { "portalLabel": "孟加拉文", "urlCode": "bn" }
+  },
+  "loading": {
+    "mode": "auto",
+    "introBrightness": 60,
+    "initialWaitMs": 2500,
+    "slideWaitMs": 800,
+    "maxSlides": 6,
+    "sameThreshold": 0.15,
+    "changeThreshold": 0.15,
+    "changeTimeoutMs": 9000,
+    "minSlidesBeforeCycle": 2,
+    "maxPromoWaitRounds": 12,
+    "autoRegion": true,
+    "autoRegionDetectMs": 6000,
+    "autoRegionMinHeight": 350,
+    "autoRegionMaxTopRatio": 0.62,
+    "compareRegion": { "left": 1000, "top": 60, "width": 900, "height": 420 },
+    "compareRegionCenter": { "left": 640, "top": 200, "width": 640, "height": 500 },
+    "portraitActiveRegionMaxWidth": 600,
+    "promoTextFractionsPortrait": { "left": 0.30, "top": 0.62, "width": 0.40, "height": 0.16 },
+    "promoTextFractionsLandscape": { "left": 0.08, "top": 0.50, "width": 0.84, "height": 0.28 },
+    "carouselTextBand": { "topRatio": 0.58, "heightRatio": 0.32 },
+    "promoTextFractions": { "left": 0.30, "top": 0.62, "width": 0.40, "height": 0.16 }
+  },
+  "canvasClicks": {
+    "loading_arrow_right": { "x": 1855, "y": 376 },
+    "continue_btn": { "x": 1375, "y": 764 },
+    "info_icon": { "x": 315, "y": 840 },
+    "buy_bonus_btn": { "x": 280, "y": 480 },
+    "buy_bonus_close": { "x": 1856, "y": 68 },
+    "menu_hamburger": { "x": 234, "y": 840 },
+    "info_close_x": { "x": 1856, "y": 68 },
+    "menu_home": { "x": 206, "y": 612 }
+  },
+  "infoScroll": {
+    "mode": "drag",
+    "dragStart": { "x": 900, "y": 620 },
+    "dragDistance": 300,
+    "dragSteps": 18,
+    "maxSteps": 40,
+    "settleMs": 550,
+    "saveMovedThreshold": 0.05,
+    "bottomThreshold": 0.03,
+    "staleLimit": 3,
+    "openThreshold": 0.12,
+    "openWaitMs": 2000,
+    "infoClickNetwork": {
+      "enabled": true,
+      "urlPattern": "api.analysiscloud.info/api/loginAction/user/click",
+      "timeoutMs": 5000
+    },
+    "openVerifyRegion": { "left": 580, "top": 30, "width": 760, "height": 850 },
+    "textRegion": { "left": 200, "top": 0, "width": 760, "height": 450 },
+    "portrait": {
+      "openThreshold": 0.10,
+      "dragStartFraction": { "fx": 0.5, "fy": 0.65 },
+      "dragDistance": 350,
+      "saveMovedThreshold": 0.04,
+      "bottomThreshold": 0.02,
+      "textRegion": { "left": 640, "top": 80, "width": 640, "height": 520 }
+    }
+  },
+  "buyBonus": {
+    "enabled": true,
+    "optional": true,
+    "openWaitMs": 1200,
+    "popupChangeThreshold": 0.08,
+    "outputFile": "buy_popup.png",
+    "landscapeFx": 0.12,
+    "landscapeFySweep": [0.13, 0.22, 0.35, 0.50, 0.65, 0.75],
+    "popupVerifyRegion": { "left": 320, "top": 30, "width": 1280, "height": 820 },
+    "slotOverrides": {}
+  },
+  "continue": {
+    "slotOverrides": {}
+  },
+  "templateThreshold": 0.68,
+  "templateThresholds": {
+    "continue_btn": 0.65,
+    "info_icon": 0.60,
+    "info_close_x": 0.55,
+    "buy_bonus_btn": 0.55
+  },
+  "continueEnterThreshold": 0.3,
+  "continueMinPageY": 750,
+  "continueSettleMs": 2500,
+  "continueCanvasFractions": [
+    { "fx": 0.5, "fy": 0.89, "note": "canvas 置中底部" },
+    { "fx": 0.5, "fy": 0.92, "note": "canvas 底部備援" }
+  ],
+  "continueCandidates": [
+    { "x": 960, "y": 810, "note": "置中（直版／橫版置中按鈕）" },
+    { "x": 1375, "y": 764, "note": "橫版偏右" },
+    { "x": 960, "y": 840, "note": "置中(備援)" }
+  ],
+  "continueOnSlotError": true,
+  "langCheck": {
+    "enabled": true,
+    "maxRetries": 2,
+    "urlParams": ["l", "lang", "locale"]
+  },
+  "templateClickOffsets": {
+    "loading_arrow_right": { "x": 0, "y": 0 },
+    "continue_btn": { "x": 0, "y": 0 },
+    "buy_bonus_btn": { "x": 0, "y": 0 }
+  },
+  "clicks": {
+    "continue_btn": { "x": 1680, "y": 850 },
+    "info_icon": { "x": 95, "y": 878 },
+    "info_close_x": { "x": 1875, "y": 42 },
+    "menu_hamburger": { "x": 42, "y": 878 },
+    "menu_home": { "x": 42, "y": 620 },
+    "loading_arrow_right": { "x": 1650, "y": 480 }
+  },
+  "searchRegions": {
+    "bottom_left": { "left": 0, "top": 750, "width": 220, "height": 161 },
+    "top_right": { "left": 1750, "top": 0, "width": 170, "height": 120 },
+    "buy_bonus_close": { "left": 1750, "top": 0, "width": 170, "height": 120 },
+    "center_right": { "left": 1100, "top": 150, "width": 450, "height": 350 },
+    "buy_bonus_btn": { "left": 0, "top": 100, "width": 520, "height": 680 },
+    "continue_btn": { "left": 550, "top": 720, "width": 820, "height": 170 },
+    "info_icon_portrait": { "left": 1120, "top": 760, "width": 130, "height": 90 },
+    "info_close_portrait": { "left": 1120, "top": 0, "width": 130, "height": 80 },
+    "buy_bonus_btn_portrait": { "left": 700, "top": 630, "width": 150, "height": 120 }
+  },
+  "uiCanvasFractions": {
+    "portrait": {
+      "info_icon": { "fx": 0.6130, "fy": 0.8836 },
+      "info_icon_alt": { "fx": 0.6080, "fy": 0.8780 },
+      "menu_hamburger": { "fx": 0.3875, "fy": 0.8793 },
+      "menu_home": { "fx": 0.3766, "fy": 0.7475 },
+      "info_close_x": { "fx": 0.6170, "fy": 0.0330 },
+      "buy_bonus_btn": { "fx": 0.4000, "fy": 0.7629 }
+    }
+  },
+  "templates": {
+    "menu_hamburger": "menu.png",
+    "info_icon": "info.png",
+    "menu_home": "home.png",
+    "info_close_x": "info_close.png",
+    "buy_bonus_btn": "buy_bonus_btn.png",
+    "buy_bonus_close": "info_close.png",
+    "continue_btn": "continue_btn.png"
+  },
+  "timeouts": {
+    "gameLoadMs": 60000,
+    "lobbyMs": 30000,
+    "mainGameMs": 3500
+  },
+  "verify": {
+    "ocrMaxWidth": 1280,
+    "ocrJpegQuality": 85,
+    "maxOutputTokens": 8192,
+    "ocrCache": true,
+    "loadingBatchOcr": false,
+    "loadingCrossMatch": true,
+    "loadingOcrCrop": true,
+    "scrollDedupThreshold": 0.05
+  }
+}

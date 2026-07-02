@@ -1,0 +1,4 @@
+node_modules/
+.auth/
+captures/
+config.json
