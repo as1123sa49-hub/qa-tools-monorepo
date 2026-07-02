@@ -11,6 +11,8 @@
 | `tools/front-log-checker/` | **前端行為 LOG 攔截**（XHR）：於目標站 DevTools Console 貼上執行 `intercept.js`，收集／匯出 log |
 | `tools/front-log-compare/` | 前端 log **雙檔比對**與**單檔欄位驗證**（靜態頁，可經 Hub 或獨立 `npm start`） |
 | `tools/img-compare/` | **圖檔／頁面擷取比對**（獨立服務，Hub 內嵌前需自行啟動） |
+| `tools/l10n-text-verify/` | **多語系圖文比對**：上傳 xlsx + 截圖，Gemini OCR 驗證在地化文案 |
+| `tools/l10n-capture/` | **多語系擷圖（階段 A）**：上傳 xlsx 選工作表，Playwright 自動擷取遊戲截圖（預設 <http://localhost:3847>） |
 | `tools/test-case-generator/` | 測案產生器（靜態工具） |
 | `tools/ui-smoke-automation/` | UI smoke 流程腳本與說明 |
 

@@ -95,6 +95,20 @@ export const SIRAYA_MODELS = [
     group: 'Claude',
     pros: '最強推理，最難規格與邊界案例可優先考慮。',
     cons: '最慢、最貴，僅建議少數高價值規格使用。'
+  },
+  {
+    id: 'deepseek-v4-flash',
+    label: 'DeepSeek V4 Flash（省額度）',
+    group: 'DeepSeek',
+    pros: 'Vision OCR 與文字任務單價低，適合大量批次。',
+    cons: '小語系遊戲 UI 準確度需實測；預設 thinking 可能增加 output token。'
+  },
+  {
+    id: 'deepseek-v4-pro',
+    label: 'DeepSeek V4 Pro',
+    group: 'DeepSeek',
+    pros: '比 Flash 推理更強，複雜規格可試。',
+    cons: '比 V4 Flash 貴且慢，OCR 任務通常 Flash 即可。'
   }
 ];
 
