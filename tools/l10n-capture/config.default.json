@@ -51,6 +51,19 @@
     "carouselTextBand": { "topRatio": 0.58, "heightRatio": 0.32 },
     "promoTextFractions": { "left": 0.30, "top": 0.62, "width": 0.40, "height": 0.16 }
   },
+  "footerLayout": {
+    "enabled": true,
+    "settleMs": 800,
+    "yStart": 0.62,
+    "probeCols": 96,
+    "probeRows": 12,
+    "contentMinBrightness": 40,
+    "portraitMaxSpan": 0.35,
+    "landscapeMinSpan": 0.62,
+    "portraitCenterMin": 0.22,
+    "portraitCenterMax": 0.78,
+    "fullBleedMinSpan": 0.92
+  },
   "canvasClicks": {
     "loading_arrow_right": { "x": 1855, "y": 376 },
     "continue_btn": { "x": 1375, "y": 764 },

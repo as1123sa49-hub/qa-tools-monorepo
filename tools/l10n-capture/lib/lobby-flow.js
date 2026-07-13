@@ -2,6 +2,42 @@ import { parseGameLocale, localeMatches } from './lang-url.js';
 import { waitForUnityCanvas } from './browser-utils.js';
 import { saveLangDebug } from './capture-debug.js';
 
+/** Network 進房 API（大廳點 Slot 後回傳 game_url） */
+export function isLoginGameUrl(url) {
+  const s = String(url || '');
+  return /login_game/i.test(s);
+}
+
+/**
+ * 解析 login_game JSON：{ status: "1", game_url: "https://..." }
+ * @returns {string} game_url
+ */
+export function parseLoginGamePayload(body) {
+  let data = body;
+  if (typeof body === 'string') {
+    try {
+      data = JSON.parse(body);
+    } catch {
+      throw new Error(`login_game 回應不是 JSON：${String(body).slice(0, 120)}`);
+    }
+  }
+  const status = data?.status;
+  const gameUrl = data?.game_url ?? data?.gameUrl;
+  if (String(status) !== '1') {
+    throw new Error(`login_game 失敗（status=${status ?? '無'}）`);
+  }
+  if (!gameUrl || typeof gameUrl !== 'string') {
+    throw new Error('login_game 缺少 game_url');
+  }
+  try {
+    // eslint-disable-next-line no-new
+    new URL(gameUrl);
+  } catch {
+    throw new Error(`login_game game_url 無效：${gameUrl}`);
+  }
+  return gameUrl;
+}
+
 async function selectEnvironment(page, portalEnv) {
   await page.getByRole('button', { name: 'Switch environment' }).click({ timeout: 10000 });
   await page.getByRole('menuitem', { name: portalEnv }).click({ timeout: 10000 });
@@ -97,21 +133,93 @@ async function reselectLobbyLanguage(page, cfg, env, lang, onLog) {
   await saveLangDebug(cfg, 'lobby_after_reselect', page.url(), onLog);
 }
 
-async function waitForGamePage(page, cfg, env) {
+/**
+ * 同 tab：以 login_game 的 game_url 進遊戲（不再只靠 waitForURL）。
+ * @param {string} gameUrlFromApi login_game 回傳的完整網址
+ */
+async function waitForGamePage(page, cfg, env, gameUrlFromApi, onLog) {
   const expectedHost = cfg.envMap[env].gameHost;
-  await page.waitForURL(u => u.hostname === expectedHost, { timeout: cfg.timeouts.gameLoadMs });
+  const timeout = cfg.timeouts.gameLoadMs ?? 60000;
+  const parsed = new URL(gameUrlFromApi);
+
+  if (parsed.hostname !== expectedHost) {
+    throw new Error(
+      `遊戲網域不符：預期 ${expectedHost}，login_game 回傳 ${parsed.hostname}` +
+      `（請確認大廳已選 ${cfg.envMap[env].portalEnv}）`,
+    );
+  }
+
+  onLog?.(`  [enter] login_game → ${gameUrlFromApi}`);
+
+  let currentHost = '';
+  try {
+    currentHost = new URL(page.url()).hostname;
+  } catch { /* ignore */ }
+
+  // 大廳若未自動導頁，同 tab 主動 goto game_url
+  if (currentHost !== expectedHost) {
+    onLog?.('  [enter] 大廳未導頁，goto game_url');
+    await page.goto(gameUrlFromApi, {
+      waitUntil: 'domcontentloaded',
+      timeout,
+    });
+  } else {
+    // 已在遊戲網域：等到 load 較穩（忽略偶發已完成導頁）
+    try {
+      await page.waitForURL(
+        u => u.hostname === expectedHost,
+        { timeout: Math.min(timeout, 15000) },
+      );
+    } catch { /* 已在目標 host */ }
+  }
+
   const actual = new URL(page.url()).hostname;
   if (actual !== expectedHost) {
     throw new Error(
-      `遊戲網域不符：預期 ${expectedHost}，實際 ${actual}（請確認大廳已選 ${cfg.envMap[env].portalEnv}）`,
+      `導頁後網域不符：預期 ${expectedHost}，實際 ${actual}\n${page.url()}`,
     );
   }
+
   await page.waitForFunction(() => {
     const c = document.querySelector('#unity-canvas, canvas');
     return c && c.width > 100;
-  }, { timeout: cfg.timeouts.gameLoadMs });
-  await waitForUnityCanvas(page, cfg.timeouts.gameLoadMs);
+  }, { timeout });
+  await waitForUnityCanvas(page, timeout);
   await page.waitForTimeout(2000);
+}
+
+/**
+ * 點 Slot 前掛 login_game，解析 game_url 後進房。
+ */
+async function enterSlotViaLoginGame(page, cfg, env, slotId, onLog) {
+  const timeout = cfg.timeouts.gameLoadMs ?? 60000;
+  const loginPromise = page.waitForResponse(
+    r => isLoginGameUrl(r.url()) && (r.status() === 200 || r.ok()),
+    { timeout },
+  );
+
+  await searchAndEnterSlot(page, slotId);
+
+  let resp;
+  try {
+    resp = await loginPromise;
+  } catch (err) {
+    throw new Error(
+      `等待 login_game 逾時（${timeout}ms）：點擊 Slot 後未收到進房 API。${String(err.message || err)}`,
+    );
+  }
+
+  let payload;
+  try {
+    payload = await resp.json();
+  } catch {
+    const text = await resp.text();
+    payload = text;
+  }
+
+  const gameUrl = parseLoginGamePayload(payload);
+  await waitForGamePage(page, cfg, env, gameUrl, onLog);
+  return gameUrl;
 }
 
 /**
@@ -132,10 +240,9 @@ export async function enterSlotWithLangCheck(page, cfg, env, lang, slotId, onLog
       await reselectLobbyLanguage(page, cfg, env, lang, onLog);
     }
 
-    await searchAndEnterSlot(page, slotId);
-    await waitForGamePage(page, cfg, env);
+    const apiGameUrl = await enterSlotViaLoginGame(page, cfg, env, slotId, onLog);
 
-    const gameUrl = page.url();
+    const gameUrl = page.url() || apiGameUrl;
     await saveLangDebug(cfg, `game_try${attempt}`, gameUrl, onLog);
     const actual = parseGameLocale(gameUrl, urlParams);
 

@@ -11,12 +11,13 @@ import {
 } from './config.js';
 import { sanitizeUserId, userAuthPath } from './user-context.js';
 import { saveCaptureMeta } from './capture-meta.js';
-import { ensureDir } from './browser-utils.js';
+import { ensureDir, screenshotBuffer } from './browser-utils.js';
 import { prepareLobby, enterSlotWithLangCheck } from './lobby-flow.js';
 import { captureLoading } from './loading-capture.js';
 import { clickContinue } from './continue-click.js';
 import { captureBuyBonus } from './buy-bonus-capture.js';
 import { mergePortraitFractions } from './portrait-layout.js';
+import { refinePortraitLayoutAfterContinue } from './footer-layout.js';
 import {
   captureInfoScroll,
   closeTopRightOverlay,
@@ -66,14 +67,18 @@ export async function runSlotCapture(opts) {
     await enterSlotWithLangCheck(page, cfg, opts.env, opts.lang, opts.slotId, onLog);
 
     onLog('擷取 Loading 畫面');
-    const { files: loadingFiles, portraitLayout, activeRegion } = await captureLoading(
-      page, cfg, outDir, templatesDir, onLog,
-    );
+    const {
+      files: loadingFiles,
+      portraitLayout: carouselPortrait,
+      activeRegion,
+    } = await captureLoading(page, cfg, outDir, templatesDir, onLog);
     result.files.push(...loadingFiles);
+    let portraitLayout = carouselPortrait;
     await saveCaptureMeta(outDir, {
       loadingPromoRegion: activeRegion,
       promoTextRegion: promoTextRegionForCapture(cfg, portraitLayout, activeRegion),
       portraitLayout,
+      layoutSignals: { carousel: carouselPortrait },
     });
     if (portraitLayout && activeRegion) {
       const ui = mergePortraitFractions(cfg, activeRegion);
@@ -89,6 +94,39 @@ export async function runSlotCapture(opts) {
       activeRegion,
       outDir,
       slotId: opts.slotId,
+    });
+
+    onLog('校正直橫版（底部像素 span，語系無關）');
+    const refined = await refinePortraitLayoutAfterContinue(page, cfg, carouselPortrait, {
+      screenshotFn: screenshotBuffer,
+    });
+    portraitLayout = refined.portraitLayout;
+    const footer = refined.footer || {};
+    const spanNote = Number.isFinite(footer.span)
+      ? ` footer span=${footer.span.toFixed(2)} mid=${(footer.mid ?? 0).toFixed(2)}`
+      : '';
+    if (portraitLayout !== carouselPortrait) {
+      onLog(
+        `  直橫版校正：${carouselPortrait ? '直' : '橫'} → ${portraitLayout ? '直' : '橫'}` +
+        `（${refined.reason}${spanNote}）`,
+      );
+    } else {
+      onLog(`  直橫版確認：${portraitLayout ? '直版' : '橫版'}（${refined.reason}${spanNote}）`);
+    }
+    await saveCaptureMeta(outDir, {
+      portraitLayout,
+      promoTextRegion: promoTextRegionForCapture(cfg, portraitLayout, activeRegion),
+      layoutSignals: {
+        carousel: carouselPortrait,
+        footer: {
+          layout: footer.layout ?? null,
+          span: footer.span,
+          mid: footer.mid,
+          n: footer.n,
+          source: footer.source,
+        },
+        fusedReason: refined.reason,
+      },
     });
 
     onLog('Buy Bonus 彈窗擷取');

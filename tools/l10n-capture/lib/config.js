@@ -21,7 +21,7 @@ export function mergeConfig(defaults, user) {
       size: { ...defaults.window?.size, ...user.window?.size },
     };
   }
-  for (const key of ['langMap', 'envMap', 'verify', 'infoScroll', 'buyBonus', 'continue', 'searchRegions', 'langCheck', 'uiCanvasFractions']) {
+  for (const key of ['langMap', 'envMap', 'verify', 'infoScroll', 'buyBonus', 'continue', 'searchRegions', 'langCheck', 'uiCanvasFractions', 'loading', 'footerLayout']) {
     if (defaults[key] || user[key]) {
       out[key] = { ...defaults[key], ...user[key] };
       if (key === 'buyBonus' && defaults.buyBonus?.slotOverrides && user.buyBonus?.slotOverrides) {

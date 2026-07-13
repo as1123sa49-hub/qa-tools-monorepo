@@ -8,7 +8,7 @@
     "start": "node server.js",
     "capture": "node capture-cli.js",
     "save-auth": "node capture-cli.js --save-auth",
-    "test": "node --test test/*.test.js",
+    "test": "node --test ./test/*.test.js",
     "prepare-templates": "node scripts/prepare-game-templates.mjs",
     "postinstall": "npx playwright install chromium"
   },

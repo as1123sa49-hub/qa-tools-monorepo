@@ -115,13 +115,14 @@ flowchart TD
 
 每款 Slot 依序執行：
 
-1. **大廳** — 切環境、選語系、搜尋並進入遊戲
+1. **大廳** — 切環境、選語系、搜尋 Slot；點擊後攔截 Network `login_game` 的 `game_url`，同 tab 導向遊戲（若大廳未自動導頁則 `goto`）
 2. **語系檢查** — 進入後驗證 URL `?l=` 等參數，不符則回大廳重試（`langCheck`）
 3. **Loading** — 自動偵測輪播區（直版置中 / 橫版右側窄輪播），`mode: auto` 等畫面換頁；至少 2 張且回到第一張時結束（不一定固定 3 張）
 4. **Continue** — 多候選點擊 + 畫面驗證，成功座標寫入 `capture-meta.json` → `continueClick`
-5. **Buy Bonus**（可選）— 候選掃描開彈窗 → 截圖 → 關閉；成功座標寫入 `buyBonusClick`；無按鈕時預設略過（`buyBonus.optional: true`）
-6. **Info** — 開啟說明面板、捲動截圖、關閉
-7. **回大廳** — 準備下一款
+5. **直橫版校正** — 進主遊戲後以底部像素水平 span（語系無關）與 Loading 判斷 fuse，寫入 `layoutSignals`
+6. **Buy Bonus**（可選）— 候選掃描開彈窗 → 截圖 → 關閉；成功座標寫入 `buyBonusClick`；無按鈕時預設略過（`buyBonus.optional: true`）
+7. **Info** — 開啟說明面板、捲動截圖、關閉
+8. **回大廳** — 準備下一款
 
 `debug: true` 時會額外產出 `captures/.../_debug/` 除錯圖。單款失敗時若 `continueOnSlotError: true`（預設），批次會繼續下一款。
 
@@ -131,7 +132,8 @@ flowchart TD
 
 | 欄位 | 說明 |
 |------|------|
-| `portraitLayout` | 是否為直版版面 |
+| `portraitLayout` | 是否為直版版面（Loading + 主遊戲底部像素 fuse） |
+| `layoutSignals` | `carousel` / `footer` span / `fusedReason`（除錯用） |
 | `loadingPromoRegion` | Loading 輪播偵測區（像素） |
 | `promoTextRegion` | Loading OCR 裁切區 |
 | `continueClick` | Continue 成功座標 `{ x, y, source }` |
@@ -369,6 +371,7 @@ npm.cmd test
 | `info-capture.js` | Info 開啟、捲動、回大廳 |
 | `click-strategies.js` | 共用候選掃描與畫面驗證 |
 | `user-context.js` | 多人工作區路徑（`data/{userId}/`） |
+| `footer-layout.js` | Continue 後底部像素 span 校正直橫版（語系無關） |
 | `verify.js` + `ocr-utils.js` | 階段 C OCR 與比對 |
 | `ocr-client.js` | Gemini / Siraya Vision API 呼叫與 token 累加 |
 
