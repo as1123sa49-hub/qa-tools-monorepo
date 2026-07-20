@@ -1,0 +1,380 @@
+# ============================================================
+# Slot015 Crazy Money (瘋狂金錢) - Game Spec for AI Agent
+# ============================================================
+# 此規格檔讓 AI Agent 能根據 high-level 意圖自動生成測試腳本
+#
+# 意圖範例 (Intent Examples):
+#   - "幫我玩 slot015 直到觸發 feature game"
+#   - "幫我玩 crazy money 直到觸發 wheel"
+#   - "幫我玩瘋狂金錢直到觸發 respin"
+#   - "Play Crazy Money until hitting a jackpot"
+#   - "幫我測 slot015 big win 表演"
+# ============================================================
+
+game:
+  id: "slot015_crazy_money"
+  name: "Crazy Money"
+  name_zh: "瘋狂金錢"
+  aliases: ["slot015", "crazy_money", "瘋狂金錢", "CrazyMoney"]
+  category: "slot"
+  search_keyword: "crazy"
+
+# --------------------------------------------------
+# 基本規格
+# --------------------------------------------------
+basic_spec:
+  layout: "1x3+1"                # 3 個一般輪 + 1 個特殊輪 (第四輪)
+  lines: 1                       # 單線賠付
+  base_cost: 1                   # 基礎收費
+  free_game: false               # ❌ 本遊戲沒有 Free Game
+  feature_game: true             # ✅ 有 Feature Game (WHEEL)
+  jackpot: false                 # JP 不是獨立玩法，是特殊輪結果之一
+  play_bonus: false
+  max_multiplier: 10000
+
+# --------------------------------------------------
+# 押注等級與功能解鎖
+# --------------------------------------------------
+bet_levels:
+  - bet: 1
+    label: "x1 (起始)"
+    reels:
+      normal: [1, 2]             # 一般輪 1~2
+      special: [4]               # 第四輪 (特殊輪)
+    normal_symbols: [10, 5, 1, 0]
+    special_symbols: ["x2", "Respin", "MINI", "MINOR"]
+    unlocked_features: ["x2", "Respin"]
+    wheel: null                  # 無 Scatter/WHEEL
+
+  - bet: 5
+    label: "x5"
+    reels:
+      normal: [1, 2, 3]         # 解鎖第 3 輪
+      special: [4]
+    normal_symbols: [10, 5, 1, 0]
+    special_symbols: ["x2", "x5", "Respin", "SS1_green", "MINI", "MINOR"]
+    unlocked_features: ["x5", "SS1_green", "第3輪"]
+    wheel:
+      trigger: "SS1_green"
+      type: "green_scatter_wheel"
+      prizes: [25, 50, 75, 100, 150, 250, 500, 1000]
+
+  - bet: 10
+    label: "x10"
+    reels:
+      normal: [1, 2, 3]
+      special: [4]
+    normal_symbols: [10, 5, 1, 0]
+    special_symbols: ["x2", "x5", "x10", "Respin", "SS1_green", "MINI", "MINOR", "MAJOR"]
+    unlocked_features: ["x10", "MAJOR"]
+    wheel:
+      trigger: "SS1_green"
+      type: "green_scatter_wheel"
+      prizes: [50, 100, 150, 200, 300, 500, 1000, 2000]
+
+  - bet: 50
+    label: "x50"
+    reels:
+      normal: [1, 2, 3]
+      special: [4]
+    normal_symbols: [10, 00, 5, 1, 0]
+    special_symbols: ["x2", "x5", "x10", "Respin", "SS2_red", "MINI", "MINOR", "MAJOR", "GRAND"]
+    unlocked_features: ["SS2_red", "GRAND"]
+    wheel:
+      trigger: "SS2_red"
+      type: "red_scatter_wheel"
+      prizes: [500, 1000, 1500, 2500, 5000, 10000, 25000, 50000]
+
+  - bet: 100
+    label: "x100"
+    reels:
+      normal: [1, 2, 3]
+      special: [4]
+    normal_symbols: [10, 00, 5, 1, 0]
+    special_symbols: ["x2", "x5", "x10", "Respin", "SS2_red", "MINI", "MINOR", "MAJOR", "GRAND"]
+    unlocked_features: ["JP輪"]
+    wheel:
+      trigger: "SS2_red"
+      type: "red_scatter_wheel"
+      prizes: [1000, 2000, 3000, 5000, 10000, 20000, 50000, 100000]
+
+# --------------------------------------------------
+# 圖騰定義 (Symbols)
+# --------------------------------------------------
+symbols:
+  normal:
+    - id: "H1"
+      type: "number"
+      values: [10, 5, 1, 0, 00]   # 數字面額圖騰
+    - id: "H2"
+      type: "number"
+    - id: "H3"
+      type: "number"
+    - id: "H4"
+      type: "number"
+    - id: "H5"
+      type: "number"
+    - id: "H6"
+      type: "number"
+    - id: "H7"
+      type: "number"
+    - id: "H8"
+      type: "number"
+    - id: "H9"
+      type: "number"
+
+  special:
+    - id: "SS1"
+      name: "綠SCATTER"
+      description: "綠色輪盤 - 觸發一般 WHEEL"
+      trigger: "wheel"
+      min_bet: 5
+
+    - id: "SS2"
+      name: "紅SCATTER"
+      description: "紅色輪盤 - 觸發 EX WHEEL（高額）"
+      trigger: "ex_wheel"
+      min_bet: 50
+
+    - id: "M1"
+      name: "MINI"
+      payout_formula: "bet * 10"
+
+    - id: "M2"
+      name: "MINOR"
+      payout_formula: "bet * 50"
+
+    - id: "M3"
+      name: "MAJOR"
+      payout_formula: "bet * 100"
+      min_bet: 10
+
+    - id: "M4"
+      name: "GRAND"
+      payout_formula: "bet * 2000"
+      min_bet: 50
+
+    - id: "RS"
+      name: "Respin"
+      description: "觸發重轉"
+
+    - id: "x2"
+      name: "x2 倍數"
+      multiplier: 2
+
+    - id: "x5"
+      name: "x5 倍數"
+      multiplier: 5
+      min_bet: 5
+
+    - id: "x10"
+      name: "x10 倍數"
+      multiplier: 10
+      min_bet: 10
+
+# --------------------------------------------------
+# 玩法流程 (Game Flow)
+# --------------------------------------------------
+game_flow:
+  main_game:
+    description: |
+      單線賠付，停輪數字就是得分金額。
+      一般輪 (1~3) 顯示數字面額，特殊輪 (4) 顯示特殊符號。
+      勝利金額 = 一般輪數字加總 × 特殊輪倍數（若有）。
+    spin_result_evaluation: "sum_of_normal_reels * multiplier"
+
+  jackpot_flow:
+    description: |
+      第四輪中 JP (MINI/MINOR/MAJOR/GRAND) 後，第四輪會換成 JP輪重轉。
+      JP輪內容：MINI、MINOR、MAJOR、GRAND。
+    trigger: "第四輪出現 JP 符號"
+    action: "第四輪換成 JP輪 → 重轉 → 出獎"
+
+  wheel_flow:
+    description: |
+      第四輪出現綠 SCATTER(SS1) 或紅 SCATTER(SS2) 就會觸發 WHEEL。
+      WHEEL 必中其中一個獎項。
+    trigger: "第四輪出現 SS1 或 SS2"
+    action: "進入 WHEEL → 轉盤 → 必中一個獎項 → 出獎結束"
+
+  respin_flow:
+    description: "第四輪出現 Respin 時重轉一次"
+    trigger: "第四輪出現 RS"
+    action: "所有輪重轉一次"
+
+  fake_performance:
+    description: |
+      中獎時，有機率啟動假表演。
+      假表演啟動時，會將未中獎的圖騰反向滾動至停輪，變成中獎。
+
+# --------------------------------------------------
+# Win 分級 (用於表演與 Trigger)
+# --------------------------------------------------
+win_tiers:
+  - name: "Big Win"
+    condition: "win >= 10 * bet AND win < 25 * bet"
+  - name: "Mega Win"
+    condition: "win >= 25 * bet AND win < 50 * bet"
+  - name: "Super Win"
+    condition: "win >= 50 * bet AND win < 100 * bet"
+  - name: "Epic Win"
+    condition: "win >= 100 * bet"
+  - name: "Max Win"
+    condition: "win >= 10000 * bet"
+
+# --------------------------------------------------
+# 機率參考
+# --------------------------------------------------
+probability:
+  main_rtp: 0.72
+  bonus_rtp: 0.25
+  total_rtp: 0.97
+  bonus_frequency: "約每 100 局觸發一次"
+  bonus_under_10x_ratio: "<90%"
+  bonus_over_1000x_rtp_ratio: "<1%"
+
+# --------------------------------------------------
+# Debug Trigger 格式 (用於強制觸發)
+# --------------------------------------------------
+debug_trigger:
+  format: "{set, set_id, wheel_id, respin_id}"
+  params:
+    set:
+      description: "取的表"
+      values:
+        0: "無倍數表"
+        1: "有倍數表"
+        2: "觸發 Respin 表"
+        3: "JP 表"
+        4: "觸發綠色 Scatter 表"
+        5: "觸發紅色 Scatter 表"
+    set_id:
+      description: "當前表抽取結果"
+      range: "0~575"
+    wheel_id:
+      description: "Scatter 結果"
+      range: "0~7"
+    respin_id:
+      description: "Respin 結果"
+      range: "0~143"
+
+# --------------------------------------------------
+# UI / 自動化設定 (Framework Integration)
+# --------------------------------------------------
+automation:
+  spin_button:
+    prompt: "the large circular spin button"
+    idle_prompt: "the large circular spin button"
+    region:
+      x_start: 0.7
+      x_end: 1.0
+      y_start: 0.7
+      y_end: 1.0
+  default_bet: 1.00
+  balance_check:
+    enabled: true
+    keywords: ["balance", "total bet", "credit"]
+
+# --------------------------------------------------
+# 意圖 → 測試目標映射 (Intent Mapping)
+# --------------------------------------------------
+# AI Agent 收到 high-level 意圖時，參考此映射決定：
+#   1. 要觸發什麼事件
+#   2. 怎麼判斷已觸發
+#   3. 需要什麼前置條件（押注等級等）
+# --------------------------------------------------
+intent_mapping:
+
+  trigger_feature_game:
+    aliases: ["feature game", "feature", "bonus", "bonus game", "特色遊戲"]
+    description: "觸發 WHEEL (本遊戲的 Feature Game)"
+    precondition:
+      min_bet: 5                 # 至少押注 5 才有 Scatter
+      reason: "bet >= 5 才解鎖 Scatter (SS1/SS2)，Scatter 觸發 WHEEL"
+    detection:
+      console_key: "game_mode"
+      condition: "game_mode != 1"
+      # 或檢查 spin response 中是否有 wheel 相關資料
+    strategy: |
+      1. 設定 bet >= 5
+      2. 持續 spin
+      3. 每次 spin 後檢查 console_listener.get_hint("game_mode")
+      4. 若 game_mode != 1 → WHEEL 觸發成功
+      5. 等待 WHEEL 動畫完成 → 出獎 → 結束
+
+  trigger_wheel:
+    aliases: ["wheel", "輪盤", "scatter", "轉盤"]
+    description: "觸發 WHEEL"
+    precondition:
+      min_bet: 5
+    detection:
+      console_key: "game_mode"
+      condition: "game_mode != 1"
+    strategy: |
+      同 trigger_feature_game
+
+  trigger_ex_wheel:
+    aliases: ["ex wheel", "ex輪盤", "紅色輪盤", "高額輪盤"]
+    description: "觸發 EX WHEEL (紅 Scatter)"
+    precondition:
+      min_bet: 50
+      reason: "bet >= 50 才解鎖紅色 Scatter (SS2)"
+    detection:
+      console_key: "game_mode"
+      condition: "game_mode != 1"
+    strategy: |
+      1. 設定 bet >= 50
+      2. 持續 spin，等待 SS2 出現在第四輪
+
+  trigger_respin:
+    aliases: ["respin", "重轉", "re-spin"]
+    description: "觸發 Respin"
+    precondition:
+      min_bet: 1                 # 任何押注都有 Respin
+    detection:
+      # Respin 回來後 balance 會變化，但 game_mode 可能維持 1
+      strategy_note: "Respin 在 base game 內完成，不會進入 feature mode"
+    strategy: |
+      1. 持續 spin
+      2. 觀察第四輪是否出現 Respin 符號
+      3. Respin 觸發後會自動重轉，等待二次結算
+
+  trigger_jackpot:
+    aliases: ["jackpot", "jp", "mini", "minor", "major", "grand"]
+    description: "觸發 Jackpot (第四輪出現 JP 符號)"
+    precondition:
+      min_bet: 1                 # MINI/MINOR bet=1 即可，MAJOR 需 bet>=10，GRAND 需 bet>=50
+    detection:
+      console_key: "game_mode"
+      condition: "game_mode != 1"
+    strategy: |
+      1. 根據目標 JP 等級設定對應 bet
+         - MINI/MINOR: bet >= 1
+         - MAJOR: bet >= 10
+         - GRAND: bet >= 50
+      2. 持續 spin
+      3. 第四輪出現 JP 符號後 → JP輪重轉 → 出獎
+
+  trigger_big_win:
+    aliases: ["big win", "mega win", "super win", "epic win", "大獎"]
+    description: "觸發 Big Win 等級表演"
+    precondition:
+      min_bet: 100
+      reason: "強制 bet=100 以確保 win 倍數計算正確"
+    detection:
+      ocr_keywords: ["Big Win", "Mega Win", "Super Win", "Epic Win"]
+    strategy: |
+      1. 設定 bet = 100
+      2. 持續 spin
+      3. OCR 偵測畫面是否出現 "Big Win" 等文字
+      4. 或 check win/bet ratio
+
+  trigger_free_spin:
+    aliases: ["free spin", "free game", "免費旋轉", "免費遊戲"]
+    description: "⚠️ 本遊戲沒有 Free Spin / Free Game"
+    precondition: null
+    detection: null
+    strategy: |
+      本遊戲 (Slot015 Crazy Money) 沒有 Free Spin。
+      玩家可能混淆了，應引導至 Feature Game (WHEEL)。
+      建議回覆：「Crazy Money 沒有 Free Spin，但有 WHEEL 輪盤作為 Feature Game，要改為觸發 WHEEL 嗎？」

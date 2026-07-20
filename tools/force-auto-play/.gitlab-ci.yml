@@ -1,0 +1,54 @@
+# 使用 Python 3.13 版本
+image: python:3.13
+
+stages:
+  - notify
+
+# 為所有 job 指定預設的 runner 標籤
+default:
+  tags:
+    - pytest-allure
+
+
+notify_discord_on_mr:
+  stage: notify
+  image: alpine:latest
+  tags:
+    - pytest-allure # Ensure this job also runs on the correct runner
+  before_script:
+    # 安裝 curl 和 jq
+    - apk update && apk add curl jq
+  script:
+    - echo "正在準備透過 API 發送 Merge Request 通知..."
+    # 從 GitLab CI/CD 變數中獲取指派人資訊
+    - ASSIGNEE_USERNAME=$(echo "$CI_MERGE_REQUEST_ASSIGNEES" | cut -d',' -f1)
+
+    # 使用 jq 建立 JSON payload
+    - |
+      JSON_PAYLOAD=$(jq -n \
+        --arg author "$GITLAB_USER_NAME" \
+        --arg title "$CI_MERGE_REQUEST_TITLE" \
+        --arg url "$CI_MERGE_REQUEST_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_IID" \
+        --arg source_branch "$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME" \
+        --arg target_branch "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" \
+        --arg assignee "$ASSIGNEE_USERNAME" \
+        '{
+          "author": $author,
+          "title": $title,
+          "url": $url,
+          "source_branch": $source_branch,
+          "target_branch": $target_branch,
+          "assignee_username": $assignee
+        }')
+
+    # 為了除錯，印出將要發送的 JSON 內容
+    - echo "將要發送的 Payload:"
+    - echo "$JSON_PAYLOAD"
+
+    # --- FIX: Replaced multi-line command with a single, quoted line for robustness ---
+    # 使用單引號將整個指令包起來，確保 shell 能正確解析。
+    # 也加入了 --fail 選項，讓 curl 在遇到 HTTP 錯誤時能回傳失敗狀態。
+    - 'curl --fail -X POST -H "Content-Type: application/json" -d "$JSON_PAYLOAD" "http://10.10.66.10:8080/api/v1/notifications/discord/mr"'
+  rules:
+    # 這個工作只在「建立」或「更新」Merge Request 時執行
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

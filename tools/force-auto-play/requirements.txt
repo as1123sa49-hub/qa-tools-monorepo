@@ -1,0 +1,14 @@
+allure-pytest
+easyocr
+ollama
+openai
+Pillow
+playwright
+pytest
+pytest-playwright
+pyyaml
+opencv-python
+numpy
+python-dotenv
+pytest-asyncio
+openpyxl

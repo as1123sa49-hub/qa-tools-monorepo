@@ -15,8 +15,24 @@
 | `tools/l10n-capture/` | **多語系擷圖（階段 A）**：上傳 xlsx 選工作表，Playwright 自動擷取遊戲截圖（預設 <http://localhost:3847>） |
 | `tools/test-case-generator/` | 測案產生器（靜態工具） |
 | `tools/ui-smoke-automation/` | UI smoke 流程腳本與說明 |
+| `tools/force-auto-play/` | **Slot 視覺驅動自動下注**（Playwright + EasyOCR + Moondream VLM；FC/JDB/COMBO 單手下注） |
 
 根目錄另有 **`package.json`**：統一安裝測試依賴與常用 npm scripts（Playwright、bonus-v2、smoke 等）。
+
+### force-auto-play（Slot 自動下注）
+
+```bash
+cd tools/force-auto-play
+python -m venv .venv
+.\.venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+playwright install chromium
+ollama pull moondream
+
+pytest tests/test_game_betting.py::test_game_betting_fc --env uat -v
+```
+
+詳見 `tools/force-auto-play/README.md`。
 
 ## 快速開始
 

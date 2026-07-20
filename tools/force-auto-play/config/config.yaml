@@ -1,0 +1,90 @@
+# config/config.yaml
+# --- 全域預設值 ---
+default_test_env: "uat"
+default_target_project: "client"
+
+# --- 報告與截圖設定 ---
+report_settings:
+  compress_screenshots: true
+  screenshot_max_kb: 100
+  screenshot_quality: 70
+  screenshot_max_width: 1280
+  record_video: true
+  video_dir: "recordings/"
+
+# --- 各專案的特定設定 ---
+projects:
+  # --- Client 專案 ---
+  client:
+    name: "平台大廳"
+    environments:
+      uat:
+        web_url: "https://jackpot-uat.combo.ph/"
+        # jc_lobby: JC 平台大廳（jackpot-uat.combo.ph）
+        # comboburst_portal: COMBO 內部大廳（games-dev.comboburst.com）切 UAT + 英文
+        entry_mode: jc_lobby
+        # JC 大廳錢包 OCR：右上 header pill + 左側 Balance 卡片
+        jc_lobby_wallet_regions:
+          - x_start: 0.80
+            x_end: 0.99
+            y_start: 0.02
+            y_end: 0.12
+          - x_start: 0.02
+            x_end: 0.24
+            y_start: 0.13
+            y_end: 0.32
+        # JC 大廳錢包 ↻ 刷新按鈕（右上 pill + 左側 Balance 卡片）
+        jc_lobby_wallet_refresh_regions:
+          - x_start: 0.855
+            x_end: 0.895
+            y_start: 0.038
+            y_end: 0.088
+          - x_start: 0.185
+            x_end: 0.235
+            y_start: 0.188
+            y_end: 0.248
+        comboburst:
+          lobby_url: "https://games-dev.comboburst.com/home/index.html"
+          portal_env: COMBO_UAT
+          lang_label: "英文"
+          game_host: "games-uat.comboburst.com"
+          auth_file: "config/.auth/comboburst_lobby.json"
+          viewport:
+            width: 1920
+            height: 911
+          # Bottom orientation bar (desktop/mobile toggle) — excluded from spin clicks in code
+          portal_chrome_exclusion:
+            y_start: 0.87
+          # Top-right wallet amount OCR (excludes ↻ refresh icon on the right)
+          lobby_wallet_region:
+            x_start: 0.66
+            x_end: 0.90
+            y_start: 0.0
+            y_end: 0.10
+          # ↻ refresh icon beside "(PHP)" in header wallet bar
+          lobby_wallet_refresh_region:
+            x_start: 0.895
+            x_end: 0.928
+            y_start: 0.018
+            y_end: 0.072
+        accounts:
+          player_vision:
+            username: "9085277801"
+            password: "1234567890"
+            description: "uat player for vision e2e"
+          player_vision_async:
+            username: "9085277801"
+            password: "1234567890"
+            description: "uat player for async vision e2e"
+      pp:
+        web_url: "https://jackpot-pp.combo.ph/"
+        entry_mode: jc_lobby
+        accounts:
+          player_vision:
+            username: "9084393107"
+            password: "1234567890"
+            description: "pp player for vision e2e"
+          player_vision_async:
+            username: "9084393107"
+            password: "1234567890"
+            description: "pp player for async vision e2e"

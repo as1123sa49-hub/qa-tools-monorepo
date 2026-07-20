@@ -1,0 +1,5073 @@
+FC:
+  FC-EGAME-004:
+    name: Lightning Bomb
+    category: egame
+    search_keyword: Lightning Bomb
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - credit
+      - win
+  FC-EGAME-006:
+    name: Go Go Rise
+    category: egame
+    search_keyword: Go Go Rise
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - credit
+      - win
+  FC-EGAME-007:
+    name: Mines
+    category: egame
+    search_keyword: Mines
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-EGAME-008:
+    name: Tower
+    category: egame
+    search_keyword: Tower
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - credit
+      - win
+  FC-FISH-001:
+    name: Monkey King Fishing
+    category: fish
+    search_keyword: Monkey King Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  FC-FISH-002:
+    name: Bao Chuan Fishing
+    category: fish
+    search_keyword: Bao Chuan Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 0.1
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  FC-FISH-004:
+    name: Fierce Fishing
+    category: fish
+    search_keyword: Fierce Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 0.1
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  FC-FISH-005:
+    name: Star Hunter
+    category: fish
+    search_keyword: Star Hunter
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 0.1
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  FC-FISH-006:
+    name: Gods Grant Fortune
+    category: fish
+    search_keyword: Gods Grant Fortune
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 0.1
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  FC-EGAME-001:
+    name: Money Tree Dozer
+    category: egame
+    search_keyword: Money Tree Dozer
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-EGAME-003:
+    name: Circus Dozer
+    category: egame
+    search_keyword: Circus Dozer
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-EGAME-005:
+    name: Super Color Game
+    category: egame
+    search_keyword: Super Color Game
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-004:
+    name: Night Market
+    category: slot
+    search_keyword: Night Market
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-007:
+    name: Chinese New Year
+    category: slot
+    search_keyword: Chinese New Year
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-018:
+    name: Rich Man
+    category: slot
+    search_keyword: Rich Man
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-021:
+    name: Lucky Fortunes
+    category: slot
+    search_keyword: Lucky Fortunes
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-022:
+    name: Chinese New Year 2
+    category: slot
+    search_keyword: Chinese New Year 2
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-025:
+    name: Sugar Bang Bang
+    category: slot
+    search_keyword: Sugar Bang Bang
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-028:
+    name: Golden Genie
+    category: slot
+    search_keyword: Golden Genie
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-032:
+    name: Night Market 2
+    category: slot
+    search_keyword: Night Market 2
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-033:
+    name: Super Elements
+    category: slot
+    search_keyword: Super Elements
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-034:
+    name: Legend Of Inca
+    category: slot
+    search_keyword: Legend Of Inca
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-038:
+    name: Lucky Fortunes 3X3
+    category: slot
+    search_keyword: Lucky Fortunes 3 X3
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-040:
+    name: Queen of Inca
+    category: slot
+    search_keyword: Queen of Inca
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-041:
+    name: Fortune Goddess
+    category: slot
+    search_keyword: Fortune Goddess
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-042:
+    name: Roma Gladiatrix
+    category: slot
+    search_keyword: Roma Gladiatrix
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-043:
+    name: Chinese New Year Moreways
+    category: slot
+    search_keyword: Chinese New Year Moreways
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-044:
+    name: Poker Win
+    category: slot
+    search_keyword: Poker Win
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-045:
+    name: Boxing Riches
+    category: slot
+    search_keyword: Boxing Riches
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-048:
+    name: Sugar Bang Bang 2
+    category: slot
+    search_keyword: Sugar Bang Bang 2
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-050:
+    name: Phoenix Fever
+    category: slot
+    search_keyword: Phoenix Fever
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-051:
+    name: Jungle Bang Bang
+    category: slot
+    search_keyword: Jungle Bang Bang
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-052:
+    name: Treasures of Odin
+    category: slot
+    search_keyword: Treasures of Odin
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-EGAME-002:
+    name: Fa Chai Dozer
+    category: egame
+    search_keyword: Fa Chai Dozer
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - credit
+      - win
+  FC-SLOT-001:
+    name: Golden Panther
+    category: slot
+    search_keyword: Golden Panther
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-002:
+    name: Three Little Pigs
+    category: slot
+    search_keyword: Three Little Pigs
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-003:
+    name: Hot Pot Party
+    category: slot
+    search_keyword: Hot Pot Party
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-005:
+    name: Pong Pong Hu
+    category: slot
+    search_keyword: Pong Pong Hu
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-006:
+    name: Panda Dragon Boat
+    category: slot
+    search_keyword: Panda Dragon Boat
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-008:
+    name: Fortune Koi
+    category: slot
+    search_keyword: Fortune Koi
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-009:
+    name: Happy Duo Bao
+    category: slot
+    search_keyword: Happy Duo Bao
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-010:
+    name: Da Le Men
+    category: slot
+    search_keyword: Da Le Men
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-011:
+    name: Animal Racing
+    category: slot
+    search_keyword: Animal Racing
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-012:
+    name: Luxury Golden Panther
+    category: slot
+    search_keyword: Luxury Golden Panther
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-013:
+    name: Magic Beans
+    category: slot
+    search_keyword: Magic Beans
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-014:
+    name: Cowboys
+    category: slot
+    search_keyword: Cowboys
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-015:
+    name: War Of The Universe
+    category: slot
+    search_keyword: War Of The Universe
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-016:
+    name: Treasure Cruise
+    category: slot
+    search_keyword: Treasure Cruise
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-017:
+    name: Gold Rush
+    category: slot
+    search_keyword: Gold Rush
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-019:
+    name: Glory Of Rome
+    category: slot
+    search_keyword: Glory Of Rome
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-020:
+    name: Robin Hood
+    category: slot
+    search_keyword: Robin Hood
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-023:
+    name: Grand Blue
+    category: slot
+    search_keyword: Grand Blue
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-024:
+    name: Treasure Raiders
+    category: slot
+    search_keyword: Treasure Raiders
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-026:
+    name: Crazy Buffalo
+    category: slot
+    search_keyword: Crazy Buffalo
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-027:
+    name: Merge Magic
+    category: slot
+    search_keyword: Merge Magic
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-029:
+    name: Zeus
+    category: slot
+    search_keyword: Zeus
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-030:
+    name: Win Win Neko
+    category: slot
+    search_keyword: Win Win Neko
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-031:
+    name: Fortune Egg
+    category: slot
+    search_keyword: Fortune Egg
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-035:
+    name: Egypt Bonanza
+    category: slot
+    search_keyword: Egypt Bonanza
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-036:
+    name: Chilihuahua
+    category: slot
+    search_keyword: Chilihuahua
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-037:
+    name: Fortune Sheep
+    category: slot
+    search_keyword: Fortune Sheep
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  FC-SLOT-039:
+    name: Fortune Money Boom
+    category: slot
+    search_keyword: Fortune Money Boom
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+JDB:
+  JDB-EGAME-002:
+    name: Lucky Color Game
+    category: egame
+    search_keyword: Lucky Color Game
+    action_button:
+      prompt: the main action or drop button
+      idle_prompt: the main action button waiting for input
+      region:
+        x_start: 0.2
+        x_end: 0.8
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-101:
+    name: Blossom of Wealth
+    category: slot
+    search_keyword: Blossom of Wealth
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-107:
+    name: Trump Card
+    category: slot
+    search_keyword: Trump Card
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-114:
+    name: Fruity Bonanza
+    category: slot
+    search_keyword: Fruity Bonanza
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-119:
+    name: Open Sesame Mega
+    category: slot
+    search_keyword: Open Sesame Mega
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-123:
+    name: Piggy Bank
+    category: slot
+    search_keyword: Piggy Bank
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-124:
+    name: Magic Ace
+    category: slot
+    search_keyword: Magic Ace
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-125:
+    name: Dragon Soar - Hyper Wild
+    category: slot
+    search_keyword: Dragon Soar - Hyper Wild
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-127:
+    name: Magic Ace Wild Lock
+    category: slot
+    search_keyword: Magic Ace Wild Lock
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-128:
+    name: Fortune Jewel
+    category: slot
+    search_keyword: Fortune Jewel
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-130:
+    name: Fruity Bonanza Combo
+    category: slot
+    search_keyword: Fruity Bonanza Combo
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-SLOT-132:
+    name: Koi Trio
+    category: slot
+    search_keyword: Koi Trio
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JDB-TABLE-001:
+    name: Pusoy
+    category: table
+    search_keyword: Pusoy
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+  JDB-TABLE-002:
+    name: Tongits
+    category: table
+    search_keyword: Tongits
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+  JDB-TABLE-003:
+    name: Tongits Fight
+    category: table
+    search_keyword: Tongits Fight
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+  JDB-TABLE-004:
+    name: Pusoy Rush
+    category: table
+    search_keyword: Pusoy Rush
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+  JDB-SLOT-070:
+    name: Super Niubi
+    category: slot
+    search_keyword: Super Niubi
+    spin_button:
+      prompt: the largest circular main spin button at the exact bottom center, bigger
+        than auto-play and turbo icons on its sides, round circle with spiral arrow,
+        not auto-spin or turbo
+      idle_prompt: the largest circular main spin button at the exact bottom center,
+        bigger than auto-play and turbo icons on its sides, round circle with spiral
+        arrow, not auto-spin or turbo
+      region:
+        x_start: 0.38
+        x_end: 0.62
+        y_start: 0.78
+        y_end: 0.88
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+JILI:
+  JILI-FISH-001:
+    name: Royal Fishing
+    category: fish
+    search_keyword: Royal Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-002:
+    name: Bombing Fishing
+    category: fish
+    search_keyword: Bombing Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-003:
+    name: Jackpot Fishing
+    category: fish
+    search_keyword: Jackpot Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-004:
+    name: Dinosaur Tycoon
+    category: fish
+    search_keyword: Dinosaur Tycoon
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-005:
+    name: Happy Fishing
+    category: fish
+    search_keyword: Happy Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-006:
+    name: Dragon Fortune
+    category: fish
+    search_keyword: Dragon Fortune
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-007:
+    name: Mega Fishing
+    category: fish
+    search_keyword: Mega Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-008:
+    name: Boom Legend
+    category: fish
+    search_keyword: Boom Legend
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-009:
+    name: All-Star Fishing
+    category: fish
+    search_keyword: All-Star Fishing
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-011:
+    name: Dinosaur Tycoon Ii
+    category: fish
+    search_keyword: Dinosaur Tycoon Ii
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-012:
+    name: Ocean King Jackpot
+    category: fish
+    search_keyword: Ocean King Jackpot
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-FISH-013:
+    name: Fortune King Jackpot
+    category: fish
+    search_keyword: Fortune King Jackpot
+    shoot_button:
+      prompt: the cannon or weapon used to shoot
+      idle_prompt: the glowing cannon ready to fire
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+    auto_shoot:
+      enabled: true
+      keywords:
+      - auto
+      - lock
+  JILI-SLOT-027:
+    name: Super Ace
+    category: slot
+    search_keyword: Super Ace
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-076:
+    name: Fortune Gems 2
+    category: slot
+    search_keyword: Fortune Gems 2
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-102:
+    name: Super Ace Deluxe
+    category: slot
+    search_keyword: Super Ace Deluxe
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-025:
+    name: Dragon Treasure
+    category: slot
+    search_keyword: Dragon Treasure
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-005:
+    name: Fortune Tree
+    category: slot
+    search_keyword: Fortune Tree
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-075:
+    name: Wild Ace
+    category: slot
+    search_keyword: Wild Ace
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-084:
+    name: Trial Of Phoenix
+    category: slot
+    search_keyword: Trial Of Phoenix
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-013:
+    name: Seven Seven Seven
+    category: slot
+    search_keyword: Seven Seven Seven
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-002:
+    name: Hot Chilli
+    category: slot
+    search_keyword: Hot Chilli
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-003:
+    name: Chin Shi Huang
+    category: slot
+    search_keyword: Chin Shi Huang
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-004:
+    name: War Of Dragons
+    category: slot
+    search_keyword: War Of Dragons
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-006:
+    name: Lucky Ball
+    category: slot
+    search_keyword: Lucky Ball
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-007:
+    name: Hyper Burst
+    category: slot
+    search_keyword: Hyper Burst
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-008:
+    name: Shanghai Beauty
+    category: slot
+    search_keyword: Shanghai Beauty
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-009:
+    name: Fa Fa Fa
+    category: slot
+    search_keyword: Fa Fa Fa
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-010:
+    name: God Of Martial
+    category: slot
+    search_keyword: God Of Martial
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-012:
+    name: Hawaii Beauty
+    category: slot
+    search_keyword: Hawaii Beauty
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-014:
+    name: Crazy 777
+    category: slot
+    search_keyword: Crazy 777
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-015:
+    name: Bubble Beauty
+    category: slot
+    search_keyword: Bubble Beauty
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-016:
+    name: Bao Boon Chin
+    category: slot
+    search_keyword: Bao Boon Chin
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-017:
+    name: Crazy Fafafa
+    category: slot
+    search_keyword: Crazy Fafafa
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-018:
+    name: Xiyangyang
+    category: slot
+    search_keyword: Xiyangyang
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-019:
+    name: Fortune Pig
+    category: slot
+    search_keyword: Fortune Pig
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-020:
+    name: Candy Baby
+    category: slot
+    search_keyword: Candy Baby
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-021:
+    name: Diamond Party
+    category: slot
+    search_keyword: Diamond Party
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-022:
+    name: Feng Shen
+    category: slot
+    search_keyword: Feng Shen
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-023:
+    name: Golden Bank
+    category: slot
+    search_keyword: Golden Bank
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-024:
+    name: Lucky Gold Bricks
+    category: slot
+    search_keyword: Lucky Gold Bricks
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-026:
+    name: Charge Buffalo
+    category: slot
+    search_keyword: Charge Buffalo
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-028:
+    name: Jungle King
+    category: slot
+    search_keyword: Jungle King
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-029:
+    name: Money Coming
+    category: slot
+    search_keyword: Money Coming
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-030:
+    name: Golden Queen
+    category: slot
+    search_keyword: Golden Queen
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-031:
+    name: Boxing King
+    category: slot
+    search_keyword: Boxing King
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-037:
+    name: Lucky Coming
+    category: slot
+    search_keyword: Lucky Coming
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-038:
+    name: Pharaoh Treasure
+    category: slot
+    search_keyword: Pharaoh Treasure
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-039:
+    name: Secret Treasure
+    category: slot
+    search_keyword: Secret Treasure
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-040:
+    name: Roma X
+    category: slot
+    search_keyword: Roma X
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-041:
+    name: Super Rich
+    category: slot
+    search_keyword: Super Rich
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-042:
+    name: Golden Empire
+    category: slot
+    search_keyword: Golden Empire
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-043:
+    name: Fortune Gems
+    category: slot
+    search_keyword: Fortune Gems
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-044:
+    name: Party Night
+    category: slot
+    search_keyword: Party Night
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-045:
+    name: Crazy Hunter
+    category: slot
+    search_keyword: Crazy Hunter
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-046:
+    name: Magic Lamp
+    category: slot
+    search_keyword: Magic Lamp
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-047:
+    name: Twin Wins
+    category: slot
+    search_keyword: Twin Wins
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-048:
+    name: Agent Ace
+    category: slot
+    search_keyword: Agent Ace
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-049:
+    name: Ali Baba
+    category: slot
+    search_keyword: Ali Baba
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-050:
+    name: Medusa
+    category: slot
+    search_keyword: Medusa
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-051:
+    name: Mega Ace
+    category: slot
+    search_keyword: Mega Ace
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-052:
+    name: Thor X
+    category: slot
+    search_keyword: Thor X
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-053:
+    name: Book Of Gold
+    category: slot
+    search_keyword: Book Of Gold
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-054:
+    name: Crazy Pusher
+    category: slot
+    search_keyword: Crazy Pusher
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-056:
+    name: Happy Taxi
+    category: slot
+    search_keyword: Happy Taxi
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-057:
+    name: Gold Rush
+    category: slot
+    search_keyword: Gold Rush
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-058:
+    name: Mayan Empire
+    category: slot
+    search_keyword: Mayan Empire
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-059:
+    name: Bone Fortune
+    category: slot
+    search_keyword: Bone Fortune
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-060:
+    name: Jili Caishen
+    category: slot
+    search_keyword: Jili Caishen
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-061:
+    name: Win Drop
+    category: slot
+    search_keyword: Win Drop
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-062:
+    name: Bonus Hunter
+    category: slot
+    search_keyword: Bonus Hunter
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-063:
+    name: World Cup
+    category: slot
+    search_keyword: World Cup
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-070:
+    name: Samba
+    category: slot
+    search_keyword: Samba
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-071:
+    name: Neko Fortune
+    category: slot
+    search_keyword: Neko Fortune
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-072:
+    name: Wild Racer
+    category: slot
+    search_keyword: Wild Racer
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-073:
+    name: Pirate Queen
+    category: slot
+    search_keyword: Pirate Queen
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-074:
+    name: Golden Joker
+    category: slot
+    search_keyword: Golden Joker
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-077:
+    name: Master Tiger
+    category: slot
+    search_keyword: Master Tiger
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-078:
+    name: Cricket King 18
+    category: slot
+    search_keyword: Cricket King 18
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-079:
+    name: Sweet Land
+    category: slot
+    search_keyword: Sweet Land
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-080:
+    name: Golden Temple
+    category: slot
+    search_keyword: Golden Temple
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-081:
+    name: Elf Bingo
+    category: slot
+    search_keyword: Elf Bingo
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-082:
+    name: Cricket Sah 75
+    category: slot
+    search_keyword: Cricket Sah 75
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-083:
+    name: Aztec Priestess
+    category: slot
+    search_keyword: Aztec Priestess
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-085:
+    name: Devil Fire
+    category: slot
+    search_keyword: Devil Fire
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-086:
+    name: Bangla Beauty
+    category: slot
+    search_keyword: Bangla Beauty
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-087:
+    name: Fortune Monkey
+    category: slot
+    search_keyword: Fortune Monkey
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-088:
+    name: Dabanggg
+    category: slot
+    search_keyword: Dabanggg
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-089:
+    name: Sin City
+    category: slot
+    search_keyword: Sin City
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-090:
+    name: Night City
+    category: slot
+    search_keyword: Night City
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-091:
+    name: King Arthur
+    category: slot
+    search_keyword: King Arthur
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-092:
+    name: Arena Fighter
+    category: slot
+    search_keyword: Arena Fighter
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-093:
+    name: Charge Buffalo Ascent
+    category: slot
+    search_keyword: Charge Buffalo Ascent
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-094:
+    name: Devil Fire 2
+    category: slot
+    search_keyword: Devil Fire 2
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-095:
+    name: Witches Night
+    category: slot
+    search_keyword: Witches Night
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-096:
+    name: Fortune Gems 3
+    category: slot
+    search_keyword: Fortune Gems 3
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-097:
+    name: Zeus
+    category: slot
+    search_keyword: Zeus
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-098:
+    name: Potion Wizard
+    category: slot
+    search_keyword: Potion Wizard
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-099:
+    name: Crazy Hunter 2
+    category: slot
+    search_keyword: Crazy Hunter 2
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-100:
+    name: Jackpot Joker
+    category: slot
+    search_keyword: Jackpot Joker
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-101:
+    name: 3 Coin Treasures
+    category: slot
+    search_keyword: 3 Coin Treasures
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-103:
+    name: The Pig House
+    category: slot
+    search_keyword: The Pig House
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-104:
+    name: Party Star
+    category: slot
+    search_keyword: Party Star
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-105:
+    name: Legacy Of Egypt
+    category: slot
+    search_keyword: Legacy Of Egypt
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-106:
+    name: 3 Pots Dragons
+    category: slot
+    search_keyword: 3 Pots Dragons
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-107:
+    name: Money Coming Expand Bets
+    category: slot
+    search_keyword: Money Coming Expand Bets
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-108:
+    name: Egypt'S Glow
+    category: slot
+    search_keyword: Egypt'S Glow
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-109:
+    name: 3 Lucky Piggy
+    category: slot
+    search_keyword: 3 Lucky Piggy
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-110:
+    name: Shogun
+    category: slot
+    search_keyword: Shogun
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-111:
+    name: Fruity Wheel
+    category: slot
+    search_keyword: Fruity Wheel
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-112:
+    name: Money Pot
+    category: slot
+    search_keyword: Money Pot
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-113:
+    name: Nightfall Hunting
+    category: slot
+    search_keyword: Nightfall Hunting
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-114:
+    name: Treasure Quest
+    category: slot
+    search_keyword: Treasure Quest
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-115:
+    name: Lucky Jaguar
+    category: slot
+    search_keyword: Lucky Jaguar
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-116:
+    name: Golden Bank 2
+    category: slot
+    search_keyword: Golden Bank 2
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-117:
+    name: Lucky Doggy
+    category: slot
+    search_keyword: Lucky Doggy
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-118:
+    name: Super Ace Joker
+    category: slot
+    search_keyword: Super Ace Joker
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-121:
+    name: Poseidon
+    category: slot
+    search_keyword: Poseidon
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-123:
+    name: Safari Mystery
+    category: slot
+    search_keyword: Safari Mystery
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-126:
+    name: 3 Coin Wild Horse
+    category: slot
+    search_keyword: 3 Coin Wild Horse
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-127:
+    name: Bikini Lady
+    category: slot
+    search_keyword: Bikini Lady
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-131:
+    name: 3 Charge Buffalo
+    category: slot
+    search_keyword: 3 Charge Buffalo
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-134:
+    name: 3 Coin Treasures 2
+    category: slot
+    search_keyword: 3 Coin Treasures 2
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  JILI-SLOT-124:
+    name: JILI-SLOT-124
+    category: slot
+    search_keyword: JILI-SLOT-124
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+SEXYBCRT:
+  MX-LIVE-001-C08:
+    name: Sexy Baccarat-C08
+    category: live
+    search_keyword: Sexy Baccarat-C08
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+  MX-LIVE-001-C09:
+    name: Sexy Baccarat-C09
+    category: live
+    search_keyword: Sexy Baccarat-C09
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+  MX-LIVE-001-C10:
+    name: Sexy Baccarat-C10
+    category: live
+    search_keyword: Sexy Baccarat-C10
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+  MX-LIVE-016-131:
+    name: Extra Sicbo-131
+    category: live
+    search_keyword: Extra Sicbo-131
+    bet_area:
+      prompt: the main betting area or chips
+      region:
+        x_start: 0.0
+        x_end: 1.0
+        y_start: 0.5
+        y_end: 1.0
+    default_bet: 1.0
+COMBO:
+  CMB_COMBO_ProsperousTiger:
+    name: Prosperous Tiger
+    category: slot
+    search_keyword: Prosperous Tiger
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GummyBonanza:
+    name: GummyBonanza
+    category: slot
+    search_keyword: Gummy Bonanza
+    skip_splash: true
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_WildBuffalo:
+    name: Wild Buffalo
+    category: slot
+    search_keyword: Wild Buffalo
+    portal_slot_id: Slot056
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_MagicRunes:
+    name: Magic Runes
+    category: slot
+    search_keyword: Magic Runes
+    portal_slot_id: Slot002
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_MagicalDeviless:
+    name: Magical Deviless
+    category: slot
+    search_keyword: Magical Deviless
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_Mines:
+    name: Mines
+    category: mines
+    betting_test: false
+    search_keyword: Mines
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_CallOfThor:
+    name: Call of Thor
+    category: slot
+    search_keyword: Call of Thor
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GemBonanza:
+    name: Gem Bonanza
+    category: slot
+    search_keyword: Gem Bonanza
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_WizardsAlchemy:
+    name: Wizard's Alchemy
+    category: slot
+    search_keyword: Wizard's Alchemy
+    search_aliases:
+    - Wizards Alchemy
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_MegaDevilsGold:
+    name: Mega Devil's Gold
+    category: slot
+    search_keyword: Mega Devil's Gold
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_AztecsTreasure:
+    name: Aztec's Treasure
+    category: slot
+    search_keyword: Aztec's Treasure
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_AnubisRising:
+    name: Anubis Rising
+    category: slot
+    search_keyword: Anubis Rising
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GoldenWest:
+    name: Golden West
+    category: slot
+    search_keyword: Golden West
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_FatToad:
+    name: Fat Toad
+    category: slot
+    search_keyword: Fat Toad
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_LuckyShamrocks:
+    name: Lucky Shamrocks
+    category: slot
+    search_keyword: Lucky Shamrocks
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_CrazyMoney:
+    name: CrazyMoney
+    category: slot
+    search_keyword: Crazy Money
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_CaishenWins:
+    name: CaishenWins
+    category: slot
+    search_keyword: Caishen Wins
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_ThunderOfZeus:
+    name: ThunderOfZeus
+    category: slot
+    search_keyword: Thunder Of Zeus
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_LuckyHeaven:
+    name: Lucky Heaven
+    category: slot
+    search_keyword: Lucky Heaven
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_PopNWin:
+    name: PopNWin
+    category: slot
+    search_keyword: Pop
+    portal_slot_id: Slot009
+    search_aliases:
+    - Pop N' Win
+    - Pop N Win
+    - PopNWin
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_FruitRush:
+    name: FruitRush
+    category: slot
+    search_keyword: Fruit Rush
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_QueenPietra:
+    name: QueenPietra
+    category: slot
+    search_keyword: Queen Pietra
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_RailroadGold:
+    name: Railroad Gold
+    category: slot
+    search_keyword: Railroad Gold
+    portrait_active_region:
+      x_start: 0.0
+      x_end: 1.0
+      y_start: 0.05
+      y_end: 0.82
+    portrait_footer_region:
+      x_start: 0.0
+      x_end: 1.0
+      y_start: 0.82
+      y_end: 1.0
+    spin_button:
+      prompt: the largest circular main spin button at the exact horizontal center
+        of the bottom control bar, significantly bigger than the smaller auto-play
+        and turbo icons on its sides, round circle with spiral arrow, not auto-spin
+        or turbo
+      idle_prompt: the largest circular main spin button at the exact center bottom,
+        much bigger than side icons, round circle, not auto-spin
+      region:
+        x_start: 0.42
+        x_end: 0.58
+        y_start: 0.84
+        y_end: 0.98
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GoldenBass:
+    name: GoldenBass
+    category: slot
+    search_keyword: Golden Bass
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_1025:
+    name: TombCat
+    category: slot
+    search_keyword: Tomb Cat
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_RoyalRiches:
+    name: RoyalRiches
+    category: slot
+    search_keyword: Royal_Riches
+    portal_slot_id: Slot033
+    search_aliases:
+    - RoyalRiches
+    - Royal Riches
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GoldenBamboo:
+    name: Golden Bamboo
+    category: slot
+    search_keyword: Golden Bamboo
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  CMB_COMBO_GoldenWish:
+    name: Golden Wish
+    category: slot
+    search_keyword: Golden Wish
+    spin_button:
+      prompt: the rightmost large circular main spin button with spiral arrow at the
+        bottom-right, round circle shape, not auto-spin or turbo
+      idle_prompt: the rightmost large circular main spin button with spiral arrow,
+        round circle shape, not auto-spin
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+PG:
+  PG-SLOT-136:
+    name: Pinata Wins
+    category: slot
+    search_keyword: Pinata Wins
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-041:
+    name: Mahjong Ways
+    category: slot
+    search_keyword: Mahjong Ways
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-058:
+    name: Treasures of Aztec
+    category: slot
+    search_keyword: Treasures of Aztec
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-065:
+    name: Lucky Neko
+    category: slot
+    search_keyword: Lucky Neko
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-075:
+    name: Wild Bandito
+    category: slot
+    search_keyword: Wild Bandito
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-101:
+    name: Lucky Piggy
+    category: slot
+    search_keyword: Lucky Piggy
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-105:
+    name: Wild Bounty Showdown
+    category: slot
+    search_keyword: Wild Bounty Showdown
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-135:
+    name: 'Wild Ape #3258'
+    category: slot
+    search_keyword: 'Wild Ape #3258'
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-138:
+    name: Anubis Wrath
+    category: slot
+    search_keyword: Anubis Wrath
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-143:
+    name: Yakuza Honor
+    category: slot
+    search_keyword: Yakuza Honor
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-144:
+    name: Wings of Iguazu
+    category: slot
+    search_keyword: Wings of Iguazu
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-146:
+    name: Oishi Delights
+    category: slot
+    search_keyword: Oishi Delights
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-150:
+    name: Geisha's Revenge
+    category: slot
+    search_keyword: Geisha's Revenge
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-151:
+    name: Fortune Snake
+    category: slot
+    search_keyword: Fortune Snake
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PG-SLOT-153:
+    name: Mr. Treasure’s Fortune
+    category: slot
+    search_keyword: Mr. Treasure’s Fortune
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+PP:
+  PP-SLOT-082:
+    name: Sweet Bonanza
+    category: slot
+    search_keyword: Sweet Bonanza
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PP-SLOT-464:
+    name: Sweet Bonanza 1000
+    category: slot
+    search_keyword: Sweet Bonanza 1000
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
+  PP-SLOT-586:
+    name: Sweet Bonanza Super Scatter
+    category: slot
+    search_keyword: Sweet Bonanza Super Scatter
+    spin_button:
+      prompt: the large circular spin button with spiral arrow
+      idle_prompt: the large circular yellow/purple spin button
+      region:
+        x_start: 0.6
+        x_end: 1.0
+        y_start: 0.6
+        y_end: 1.0
+    default_bet: 1.0
+    balance_check:
+      enabled: true
+      keywords:
+      - balance
+      - total bet
+      - credit
